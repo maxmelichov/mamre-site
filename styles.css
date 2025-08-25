@@ -61,16 +61,12 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 
 .story { padding: 24px 0 8px; }
 .story-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-.announcement { padding: 8px 0 24px; }
-.announcement h2 { margin: 0 0 10px; }
-.announcement .card p { margin: 0 0 10px; }
-
+.about { padding: 8px 0 8px; }
+.technology { padding: 8px 0 24px; }
 .figures { padding: 8px 0 24px; }
 .fig-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-.fig-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; min-height: 160px; display: flex; align-items: center; justify-content: center; }
-.fig-card.placeholder { color: var(--muted); font-style: italic; }
-.fig-card figure, .fig-card img { display: block; max-width: 100%; height: auto; }
-.fig-card figcaption { margin-top: 8px; text-align: center; }
+.fig-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.fig-card img { display: block; max-width: 100%; height: auto; border-radius: 8px; }
 
 .card {
   background: var(--panel);
