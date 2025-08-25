@@ -56,82 +56,54 @@
         </div>
       </section>
 
-      <section class="tts-demo">
+      <section class="input-section">
         <div class="container">
-          <h2 class="lang-en">Try text to speech</h2>
-          <h2 class="lang-he" lang="he">נסו טקסט לדיבור</h2>
-          <div class="mode">
-            <label><input type="radio" name="synthMode" value="browser" checked> <span class="lang-en">Browser TTS</span><span class="lang-he" lang="he">דפדפן</span></label>
-            <label><input type="radio" name="synthMode" value="api"> <span class="lang-en">Mamre API</span><span class="lang-he" lang="he">ממשק API</span></label>
-          </div>
-          <div id="tts-support-warning" class="notice hidden">
-            <p class="lang-en">Your browser doesn't support the Web Speech API. Audio preview may not work.</p>
-            <p class="lang-he" lang="he">הדפדפן שלך אינו תומך ב־Web Speech API. תצוגת שמע עלולה שלא לעבוד.</p>
-          </div>
-
-          <div class="controls">
-            <label for="voiceSelect" class="lang-en">Voice</label>
-            <label for="voiceSelect" class="lang-he" lang="he">קול</label>
-            <select id="voiceSelect" aria-label="Voice"></select>
-
-            <label for="rate" class="lang-en">Rate</label>
-            <label for="rate" class="lang-he" lang="he">מהירות</label>
-            <input id="rate" type="range" min="0.5" max="1.5" step="0.1" value="1">
-
-            <label for="pitch" class="lang-en">Pitch</label>
-            <label for="pitch" class="lang-he" lang="he">גובה</label>
-            <input id="pitch" type="range" min="0" max="2" step="0.1" value="1">
-          </div>
-
+          <h2 class="lang-en">Input text</h2>
+          <h2 class="lang-he" lang="he">טקסט קלט</h2>
           <div class="input-row">
-            <textarea id="ttsText" rows="4" placeholder="Type text to speak..."></textarea>
+            <textarea id="userInputText" rows="4" placeholder="Type your input text here..."></textarea>
           </div>
-
-          <div class="actions">
-            <button id="btnPlay" class="primary">
-              <span class="lang-en">Play</span>
-              <span class="lang-he" lang="he">נגן</span>
-            </button>
-            <button id="btnStop" class="ghost">
-              <span class="lang-en">Stop</span>
-              <span class="lang-he" lang="he">עצור</span>
-            </button>
-          </div>
-
-          <div id="apiStatus" class="muted small" role="status" aria-live="polite" style="margin-top:8px;"></div>
-          <audio id="apiAudio" class="api-audio" controls style="margin-top:8px; width:100%;"></audio>
         </div>
       </section>
 
-      <section class="samples">
+      <section class="recordings">
         <div class="container">
-          <h2 class="lang-en">Samples</h2>
-          <h2 class="lang-he" lang="he">דוגמאות</h2>
-          <div class="sample-grid">
+          <h2 class="lang-en">Recordings</h2>
+          <h2 class="lang-he" lang="he">הקלטות</h2>
+          <div class="rec-grid">
             <div class="card">
-              <h3 class="lang-en">Audio — English</h3>
-              <h3 class="lang-he" lang="he">שמע — אנגלית</h3>
-              <audio controls src="assets/sample-en-1.mp3"></audio>
-              <p class="muted lang-en small">Upload to <code>assets/sample-en-1.mp3</code></p>
-              <p class="muted lang-he small" lang="he">העלו קובץ אל <code>assets/sample-en-1.mp3</code></p>
+              <h3 class="lang-en">Target</h3>
+              <h3 class="lang-he" lang="he">מטרה</h3>
+              <audio controls>
+                <source src="recordings/i_target.mp3" type="audio/mpeg">
+                <source src="recordings/i_target.wav" type="audio/wav">
+                <source src="recordings/i_target.ogg" type="audio/ogg">
+              </audio>
+              <p class="muted small lang-en">Expected location: <code>recordings/i_target.(mp3|wav|ogg)</code></p>
+              <p class="muted small lang-he" lang="he">נתיב צפוי: <code>recordings/i_target.(mp3|wav|ogg)</code></p>
             </div>
             <div class="card">
-              <h3 class="lang-en">Audio — Hebrew</h3>
-              <h3 class="lang-he" lang="he">שמע — עברית</h3>
-              <audio controls src="assets/sample-he-1.mp3"></audio>
-              <p class="muted lang-en small">Upload to <code>assets/sample-he-1.mp3</code></p>
-              <p class="muted lang-he small" lang="he">העלו קובץ אל <code>assets/sample-he-1.mp3</code></p>
-            </div>
-            <div class="card">
-              <h3 class="lang-en">Video demo</h3>
-              <h3 class="lang-he" lang="he">סרטון הדגמה</h3>
-              <video controls poster="assets/placeholder.jpg" class="video">
-                <source src="assets/demo.mp4" type="video/mp4">
-              </video>
-              <p class="muted lang-en small">Upload to <code>assets/demo.mp4</code> (optional poster: <code>assets/placeholder.jpg</code>)</p>
-              <p class="muted lang-he small" lang="he">העלו אל <code>assets/demo.mp4</code> (אופציונלי: תמונת כריכה <code>assets/placeholder.jpg</code>)</p>
+              <h3 class="lang-en">Prediction</h3>
+              <h3 class="lang-he" lang="he">חזוי</h3>
+              <audio controls>
+                <source src="recordings/i_prediction.mp3" type="audio/mpeg">
+                <source src="recordings/i_prediction.wav" type="audio/wav">
+                <source src="recordings/i_prediction.ogg" type="audio/ogg">
+              </audio>
+              <p class="muted small lang-en">Expected location: <code>recordings/i_prediction.(mp3|wav|ogg)</code></p>
+              <p class="muted small lang-he" lang="he">נתיב צפוי: <code>recordings/i_prediction.(mp3|wav|ogg)</code></p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="demo-video">
+        <div class="container">
+          <h2 class="lang-en">Demo video</h2>
+          <h2 class="lang-he" lang="he">סרטון הדגמה</h2>
+          <video controls poster="assets/placeholder.jpg" class="video">
+            <source src="assets/demo.mp4" type="video/mp4">
+          </video>
         </div>
       </section>
     </main>

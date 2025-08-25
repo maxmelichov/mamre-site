@@ -6,9 +6,10 @@ Static website for "MamreVoice" — a simple, clear and human text-to-speech exp
 
 - `index.html` — landing page with bilingual (EN/HE) content and TTS preview
 - `styles.css` — responsive, RTL-aware styles
-- `script.js` — language toggle and Web Speech API preview
+- `script.js` — language toggle (no inference)
 - `assets/` — put audio/video samples here (see below)
 - `config.json` — optional API configuration (see below)
+ - `recordings/` — place your `i_target.*` and `i_prediction.*` here
 
 ## Local preview
 
@@ -29,34 +30,14 @@ Place your demo files in the `assets/` folder and keep the file names used by `i
 - Video demo: `assets/demo.mp4`
 - Optional poster image: `assets/placeholder.jpg`
 
-## API integration (optional)
+## Recordings
 
-You can switch the TTS mode to "Mamre API" in the UI and post text to your backend.
+Put your files in `recordings/` with these names, any of the listed formats:
 
-1) Create `config.json` in the site root:
+- `i_target.(mp3|wav|ogg)` — target reference
+- `i_prediction.(mp3|wav|ogg)` — generated prediction
 
-```json
-{
-  "api": {
-    "baseUrl": "https://your-backend.example.com",
-    "ttsPath": "/v1/tts",
-    "authHeader": "Authorization",
-    "authToken": "Bearer YOUR_TOKEN"
-  }
-}
-```
-
-2) Your endpoint should respond with either:
-
-- Binary audio with a content-type like `audio/mpeg` (recommended), or
-- JSON: `{ "audioUrl": "https://.../file.mp3" }`
-
-The client will auto-detect and play it.
-
-### Important
-
-- Never expose secrets in a public static site. If you need private keys, put a simple proxy on your server that injects credentials server-side and enables CORS for this origin.
-- Ensure CORS is enabled on your API for the site origin.
+They will be shown side-by-side on the page.
 
 ## Notes
 
