@@ -24,9 +24,12 @@
         <div class="container">
           <h2 class="lang-en">Demo video</h2>
           <h2 class="lang-he" lang="he">סרטון הדגמה</h2>
-          <video controls poster="assets/placeholder.jpg" class="video">
-            <source src="recordings/demo.mp4" type="video/mp4">
-          </video>
+          <div class="video-wrap" id="demoVideoWrap">
+            <video controls playsinline poster="assets/placeholder.jpg" class="video" id="demoVideo">
+              <source src="recordings/demo.mp4" type="video/mp4">
+            </video>
+            <button class="fs-btn" id="btnDemoFullscreen" aria-label="Toggle fullscreen">⤢</button>
+          </div>
         </div>
       </section>
 
@@ -67,44 +70,22 @@
         </div>
       </section>
 
-      <section class="input-section">
-        <div class="container">
-          <h2 class="lang-en">Input text</h2>
-          <h2 class="lang-he" lang="he">טקסט קלט</h2>
-          <div class="input-row">
-            <textarea id="ttsText" rows="4" placeholder="Type your input text here..."></textarea>
-          </div>
-        </div>
-      </section>
+      
 
-      <section class="recordings">
+      <section class="voice-conversion">
         <div class="container">
-          <h2 class="lang-en">Recordings</h2>
-          <h2 class="lang-he" lang="he">הקלטות</h2>
-          <div class="rec-grid">
-            <div class="card">
-              <h3 class="lang-en">Target</h3>
-              <h3 class="lang-he" lang="he">מטרה</h3>
-              <audio controls>
-                <source src="recordings/i_target.mp3" type="audio/mpeg">
-                <source src="recordings/i_target.wav" type="audio/wav">
-                <source src="recordings/i_target.ogg" type="audio/ogg">
-              </audio>
-              <p class="muted small lang-en">Expected location: <code>recordings/i_target.(mp3|wav|ogg)</code></p>
-              <p class="muted small lang-he" lang="he">נתיב צפוי: <code>recordings/i_target.(mp3|wav|ogg)</code></p>
+          <h2 class="lang-en">Voice conversion</h2>
+          <h2 class="lang-he" lang="he">המרת קול</h2>
+          <div class="vc-table">
+            <div class="vc-row vc-header">
+              <div class="vc-cell"><strong class="lang-en">Text</strong><strong class="lang-he" lang="he">טקסט</strong></div>
+              <div class="vc-cell"><strong class="lang-en">Target</strong><strong class="lang-he" lang="he">מטרה</strong></div>
+              <div class="vc-cell"><strong class="lang-en">Prediction</strong><strong class="lang-he" lang="he">חזוי</strong></div>
             </div>
-            <div class="card">
-              <h3 class="lang-en">Prediction</h3>
-              <h3 class="lang-he" lang="he">חזוי</h3>
-              <audio controls>
-                <source src="recordings/i_prediction.mp3" type="audio/mpeg">
-                <source src="recordings/i_prediction.wav" type="audio/wav">
-                <source src="recordings/i_prediction.ogg" type="audio/ogg">
-              </audio>
-              <p class="muted small lang-en">Expected location: <code>recordings/i_prediction.(mp3|wav|ogg)</code></p>
-              <p class="muted small lang-he" lang="he">נתיב צפוי: <code>recordings/i_prediction.(mp3|wav|ogg)</code></p>
-            </div>
+            <div id="vc-body" class="vc-body"></div>
           </div>
+          <p class="muted small lang-en">Examples are auto-detected from the <code>recordings/</code> folder.</p>
+          <p class="muted small lang-he" lang="he">דוגמאות מזוהות אוטומטית מתיקיית <code>recordings/</code>.</p>
         </div>
       </section>
 
