@@ -61,6 +61,16 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 
 .story { padding: 24px 0 8px; }
 .story-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.announcement { padding: 8px 0 24px; }
+.announcement h2 { margin: 0 0 10px; }
+.announcement .card p { margin: 0 0 10px; }
+
+.figures { padding: 8px 0 24px; }
+.fig-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.fig-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+.fig-card.placeholder { color: var(--muted); font-style: italic; }
+.fig-card figure, .fig-card img { display: block; max-width: 100%; height: auto; }
+.fig-card figcaption { margin-top: 8px; text-align: center; }
 
 .card {
   background: var(--panel);
@@ -132,6 +142,7 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   .hero { padding-top: 64px; }
   .hero h1 { font-size: 56px; }
   .story-grid { grid-template-columns: 1fr 1fr; }
+  .fig-grid { grid-template-columns: 1fr 1fr 1fr; }
   .vc-row { grid-template-columns: 2fr 1fr 1fr; }
 }
 
