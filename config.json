@@ -1,0 +1,10 @@
+{
+  "api": {
+    "baseUrl": "",
+    "ttsPath": "/v1/tts",
+    "authHeader": "Authorization",
+    "authToken": ""
+  }
+}
+
+

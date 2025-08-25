@@ -13,6 +13,9 @@
   const textInput = document.getElementById('ttsText');
   const btnPlay = document.getElementById('btnPlay');
   const btnStop = document.getElementById('btnStop');
+  const apiAudio = document.getElementById('apiAudio');
+  const apiStatus = document.getElementById('apiStatus');
+  const modeRadios = Array.from(document.querySelectorAll('input[name="synthMode"]'));
 
   const currentYear = new Date().getFullYear();
   if (yearEl) yearEl.textContent = String(currentYear);
@@ -40,6 +43,43 @@
 
   btnEn.addEventListener('click', () => applyLang('en'));
   btnHe.addEventListener('click', () => applyLang('he'));
+
+  // Config & mode
+  let appConfig = null;
+  let currentMode = 'browser'; // 'browser' | 'api'
+
+  async function loadConfig() {
+    try {
+      const res = await fetch('config.json', { cache: 'no-store' });
+      if (!res.ok) return;
+      appConfig = await res.json();
+      setApiStatus('Config loaded');
+    } catch (_) {
+      // No config is fine; UI will still work in browser mode
+    }
+  }
+
+  function setApiStatus(message, isError = false) {
+    if (!apiStatus) return;
+    apiStatus.textContent = message || '';
+    apiStatus.style.color = isError ? '#ff9aa2' : '';
+  }
+
+  function applyMode(mode) {
+    currentMode = mode;
+    const isBrowser = mode === 'browser';
+    [voiceSelect, rateInput, pitchInput].forEach(el => { if (el) el.disabled = !isBrowser; });
+    if (apiAudio) {
+      apiAudio.style.display = mode === 'api' ? 'block' : 'none';
+      if (mode === 'browser') { apiAudio.pause(); apiAudio.removeAttribute('src'); apiAudio.load(); }
+    }
+    if (mode === 'api') setApiStatus('API mode — configure config.json'); else setApiStatus('');
+  }
+
+  modeRadios.forEach(r => r.addEventListener('change', (e) => {
+    const value = e.target.value;
+    applyMode(value);
+  }));
 
   // TTS logic
   let voices = [];
@@ -102,10 +142,14 @@
     }
   }
 
-  function play() {
-    if (!supportsSpeech) return;
+  async function play() {
     const text = (textInput?.value || '').trim();
     if (!text) return;
+    if (currentMode === 'api') {
+      await playViaApi(text);
+      return;
+    }
+    if (!supportsSpeech) return;
     window.speechSynthesis.cancel();
     utterance = new SpeechSynthesisUtterance(text);
     const selected = findVoiceByValue(voiceSelect?.value);
@@ -138,6 +182,62 @@
   // Initialize
   const initial = detectInitialLang();
   applyLang(initial);
+  applyMode('browser');
+  loadConfig();
+
+  // API synthesis
+  async function playViaApi(text) {
+    if (!appConfig || !appConfig.api || !appConfig.api.baseUrl) {
+      setApiStatus('Missing config.json or api.baseUrl', true);
+      return;
+    }
+    try {
+      setApiStatus('Requesting audio...');
+      const url = new URL((appConfig.api.ttsPath || '/v1/tts'), appConfig.api.baseUrl).toString();
+      const headers = { 'Content-Type': 'application/json' };
+      if (appConfig.api.authHeader && appConfig.api.authToken) {
+        headers[appConfig.api.authHeader] = appConfig.api.authToken;
+      }
+      const body = {
+        text,
+        voice: voiceSelect?.value || null,
+        rate: parseFloat(rateInput?.value || '1'),
+        pitch: parseFloat(pitchInput?.value || '1'),
+        lang: bodyEl.getAttribute('data-lang') || 'en'
+      };
+      const res = await fetch(url, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const maybeText = await res.text().catch(() => '');
+        throw new Error(`API error ${res.status}: ${maybeText.slice(0,200)}`);
+      }
+      const ct = res.headers.get('Content-Type') || '';
+      if (ct.startsWith('audio/')) {
+        const blob = await res.blob();
+        const objectUrl = URL.createObjectURL(blob);
+        apiAudio.src = objectUrl;
+        await apiAudio.play();
+        setApiStatus('');
+        return;
+      }
+      if (ct.includes('application/json')) {
+        const data = await res.json();
+        if (data.audioUrl) {
+          apiAudio.src = data.audioUrl;
+          await apiAudio.play();
+          setApiStatus('');
+          return;
+        }
+        throw new Error('JSON response missing audioUrl');
+      }
+      throw new Error(`Unexpected content type: ${ct}`);
+    } catch (err) {
+      setApiStatus(err.message || String(err), true);
+    }
+  }
 })();
 
 

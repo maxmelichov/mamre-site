@@ -60,6 +60,10 @@
         <div class="container">
           <h2 class="lang-en">Try text to speech</h2>
           <h2 class="lang-he" lang="he">נסו טקסט לדיבור</h2>
+          <div class="mode">
+            <label><input type="radio" name="synthMode" value="browser" checked> <span class="lang-en">Browser TTS</span><span class="lang-he" lang="he">דפדפן</span></label>
+            <label><input type="radio" name="synthMode" value="api"> <span class="lang-en">Mamre API</span><span class="lang-he" lang="he">ממשק API</span></label>
+          </div>
           <div id="tts-support-warning" class="notice hidden">
             <p class="lang-en">Your browser doesn't support the Web Speech API. Audio preview may not work.</p>
             <p class="lang-he" lang="he">הדפדפן שלך אינו תומך ב־Web Speech API. תצוגת שמע עלולה שלא לעבוד.</p>
@@ -93,6 +97,9 @@
               <span class="lang-he" lang="he">עצור</span>
             </button>
           </div>
+
+          <div id="apiStatus" class="muted small" role="status" aria-live="polite" style="margin-top:8px;"></div>
+          <audio id="apiAudio" class="api-audio" controls style="margin-top:8px; width:100%;"></audio>
         </div>
       </section>
 

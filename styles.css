@@ -71,6 +71,8 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 .card h3 { margin-top: 0; }
 
 .tts-demo { padding: 24px 0; }
+.mode { display: flex; gap: 12px; margin: 8px 0 12px; color: var(--muted); }
+.mode input { transform: translateY(1px); }
 .controls {
   display: grid;
   grid-template-columns: 120px 1fr;
@@ -105,6 +107,7 @@ button {
 button.primary { background: linear-gradient(180deg, var(--brand), var(--brand-strong)); color: #03101a; border-color: transparent; }
 button.ghost { background: transparent; }
 button:focus-visible { outline: 4px solid var(--focus); outline-offset: 2px; }
+select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .notice { background: #151a24; border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
 .hidden { display: none; }
