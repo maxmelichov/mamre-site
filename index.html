@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MamreVoice — a simple, clear and human text-to-speech experience.">
+    <title>MamreVoice — Text to Speech</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="./script.js"></script>
+  </head>
+  <body data-lang="en">
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">Mamre<span class="accent">Voice</span></div>
+        <nav class="lang-switch" aria-label="Language switcher">
+          <button id="btn-lang-en" class="chip active" data-lang="en" aria-pressed="true">EN</button>
+          <button id="btn-lang-he" class="chip" data-lang="he" aria-pressed="false">עב</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1 class="lang-en">Give your app a human voice</h1>
+          <h1 class="lang-he" lang="he">תנו לאפליקציה שלכם קול אנושי</h1>
+          <p class="sub lang-en">MamreVoice makes speech simple, clear, and human.</p>
+          <p class="sub lang-he" lang="he">MamreVoice הופך דיבור לפשוט, ברור ואנושי.</p>
+        </div>
+      </section>
+
+      <section class="story">
+        <div class="container">
+          <h2 class="lang-en">Why "Mamre"?</h2>
+          <h2 class="lang-he" lang="he">למה "Mamre"?</h2>
+          <div class="story-grid">
+            <div class="card">
+              <h3 class="lang-en">A conversation, not a proclamation</h3>
+              <h3 class="lang-he" lang="he">שיחה אנושית, לא הצהרה מרוחקת</h3>
+              <p class="lang-en">
+                The name MamreVoice comes from the biblical story of Abraham at the oaks of Mamre (Genesis 18:1),
+                where the divine appears not as a distant voice from the heavens but as a simple, clear, human conversation.
+              </p>
+              <p class="lang-he" lang="he">
+                השם MamreVoice מגיע מהסיפור התנ"כי על אברהם באלוני ממרא, כפי שמסופר בספר בראשית:
+              </p>
+              <blockquote class="lang-he" lang="he">
+                "וַיֵּרָא אֵלָיו ה' בְּאֵלוֹנֵי מַמְרֵא, וְהוּא יֹשֵׁב פֶּתַח הָאֹהֶל כְּחֹם הַיּוֹם." (בראשית י"ח, א')
+              </blockquote>
+              <p class="lang-he" lang="he">
+                בפסוק הזה מתואר הרגע שבו אלוהים מופיע לאברהם בדרך ייחודית: במקום לדבר אליו ישירות מהשמים,
+                הוא מתגלה אליו דרך שלושה שליחים, בדמות אנשים רגילים. הדיבור האלוהי הופך כאן לשיחה פשוטה, ברורה ואנושית.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tts-demo">
+        <div class="container">
+          <h2 class="lang-en">Try text to speech</h2>
+          <h2 class="lang-he" lang="he">נסו טקסט לדיבור</h2>
+          <div id="tts-support-warning" class="notice hidden">
+            <p class="lang-en">Your browser doesn't support the Web Speech API. Audio preview may not work.</p>
+            <p class="lang-he" lang="he">הדפדפן שלך אינו תומך ב־Web Speech API. תצוגת שמע עלולה שלא לעבוד.</p>
+          </div>
+
+          <div class="controls">
+            <label for="voiceSelect" class="lang-en">Voice</label>
+            <label for="voiceSelect" class="lang-he" lang="he">קול</label>
+            <select id="voiceSelect" aria-label="Voice"></select>
+
+            <label for="rate" class="lang-en">Rate</label>
+            <label for="rate" class="lang-he" lang="he">מהירות</label>
+            <input id="rate" type="range" min="0.5" max="1.5" step="0.1" value="1">
+
+            <label for="pitch" class="lang-en">Pitch</label>
+            <label for="pitch" class="lang-he" lang="he">גובה</label>
+            <input id="pitch" type="range" min="0" max="2" step="0.1" value="1">
+          </div>
+
+          <div class="input-row">
+            <textarea id="ttsText" rows="4" placeholder="Type text to speak..."></textarea>
+          </div>
+
+          <div class="actions">
+            <button id="btnPlay" class="primary">
+              <span class="lang-en">Play</span>
+              <span class="lang-he" lang="he">נגן</span>
+            </button>
+            <button id="btnStop" class="ghost">
+              <span class="lang-en">Stop</span>
+              <span class="lang-he" lang="he">עצור</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="samples">
+        <div class="container">
+          <h2 class="lang-en">Samples</h2>
+          <h2 class="lang-he" lang="he">דוגמאות</h2>
+          <div class="sample-grid">
+            <div class="card">
+              <h3 class="lang-en">Audio — English</h3>
+              <h3 class="lang-he" lang="he">שמע — אנגלית</h3>
+              <audio controls src="assets/sample-en-1.mp3"></audio>
+              <p class="muted lang-en small">Upload to <code>assets/sample-en-1.mp3</code></p>
+              <p class="muted lang-he small" lang="he">העלו קובץ אל <code>assets/sample-en-1.mp3</code></p>
+            </div>
+            <div class="card">
+              <h3 class="lang-en">Audio — Hebrew</h3>
+              <h3 class="lang-he" lang="he">שמע — עברית</h3>
+              <audio controls src="assets/sample-he-1.mp3"></audio>
+              <p class="muted lang-en small">Upload to <code>assets/sample-he-1.mp3</code></p>
+              <p class="muted lang-he small" lang="he">העלו קובץ אל <code>assets/sample-he-1.mp3</code></p>
+            </div>
+            <div class="card">
+              <h3 class="lang-en">Video demo</h3>
+              <h3 class="lang-he" lang="he">סרטון הדגמה</h3>
+              <video controls poster="assets/placeholder.jpg" class="video">
+                <source src="assets/demo.mp4" type="video/mp4">
+              </video>
+              <p class="muted lang-en small">Upload to <code>assets/demo.mp4</code> (optional poster: <code>assets/placeholder.jpg</code>)</p>
+              <p class="muted lang-he small" lang="he">העלו אל <code>assets/demo.mp4</code> (אופציונלי: תמונת כריכה <code>assets/placeholder.jpg</code>)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="lang-en">© <span id="year"></span> MamreVoice</p>
+        <p class="lang-he" lang="he">© <span id="year-he"></span> MamreVoice</p>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="notice">
+        JavaScript is required for language switching and TTS preview.
+      </div>
+    </noscript>
+  </body>
+  <!--
+    Built as a static site. To preview locally, serve this folder (e.g., `python3 -m http.server`).
+  -->
+</html>
+
+
