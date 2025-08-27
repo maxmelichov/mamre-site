@@ -126,6 +126,10 @@
     const firstTargetUrl = await pickFirstExisting(firstTargetCandidates);
     const firstPredUrl = await pickFirstExisting(firstPredCandidates);
     
+    // Debug: log what files were found
+    console.log('First target URL:', firstTargetUrl);
+    console.log('First pred URL:', firstPredUrl);
+    
     if (firstTargetUrl && firstPredUrl) {
       const freeRow = document.createElement('div');
       freeRow.className = 'vc-row';
