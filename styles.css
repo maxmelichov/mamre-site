@@ -7,6 +7,12 @@
   --brand-strong: #3fb5ee;
   --border: #1f2330;
   --focus: #8dd8ff55;
+  
+  /* iOS safe area support */
+  --safe-area-top: env(safe-area-inset-top);
+  --safe-area-right: env(safe-area-inset-right);
+  --safe-area-bottom: env(safe-area-inset-bottom);
+  --safe-area-left: env(safe-area-inset-left);
 }
 
 * { box-sizing: border-box; }
@@ -17,6 +23,22 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  
+  /* iOS-specific improvements */
+  -webkit-text-size-adjust: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+  
+  /* Enable smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Allow text selection for content areas */
+.static-text, .card p, blockquote {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
@@ -24,7 +46,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 max(20px, var(--safe-area-left)) 0 max(20px, var(--safe-area-right));
 }
 
 .site-header {
@@ -34,6 +56,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
   background: rgba(11,12,16,0.8);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
+  padding-top: var(--safe-area-top);
 }
 .site-header .container {
   display: flex;
@@ -99,7 +122,16 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
   word-wrap: break-word;
   word-break: break-word;
 }
-.vc-cell audio { width: 100%; }
+.vc-cell audio { 
+  width: 100%; 
+  height: 40px;
+  border-radius: 6px;
+  background: var(--bg);
+  
+  /* Safari-specific audio styling */
+  -webkit-appearance: none;
+  appearance: none;
+}
 .static-text { 
   max-height: 150px; 
   overflow-y: auto; 
@@ -153,6 +185,16 @@ button {
   background: #141826;
   color: var(--text);
   cursor: pointer;
+  
+  /* Enhanced touch support */
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  
+  /* iOS button improvements */
+  -webkit-appearance: none;
+  appearance: none;
 }
 button.primary { background: linear-gradient(180deg, var(--brand), var(--brand-strong)); color: #03101a; border-color: transparent; }
 button.ghost { background: transparent; }
@@ -173,6 +215,10 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   border: 1px solid var(--border); 
   background: #000;
   touch-action: manipulation;
+  
+  /* iOS video improvements */
+  -webkit-playsinline: true;
+  object-fit: contain;
 }
 .fs-btn { 
   position: absolute; 
@@ -217,7 +263,7 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
     padding: 8px; 
     min-height: 80px;
   }
-  .vc-cell audio { width: 100%; height: 32px; }
+  .vc-cell audio { width: 100%; height: 44px; min-height: 44px; }
   .static-text { 
     font-size: 13px; 
     line-height: 1.3; 
@@ -280,6 +326,45 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
 @media (min-width: 1200px) {
   .hero h1 { font-size: 64px; }
   .container { max-width: 1200px; }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iPhone/iPad specific styles */
+  .site-header {
+    /* Sticky header for iOS with safe area */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .vc-cell audio {
+    /* Better audio controls on iOS */
+    height: 44px;
+    border: 1px solid var(--border);
+  }
+  
+  .video {
+    /* Prevent zoom on video double-tap */
+    touch-action: none;
+  }
+  
+  /* Improve scrolling momentum on iOS */
+  .static-text, .card {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* PWA-specific styles */
+@media all and (display-mode: standalone) {
+  .site-header {
+    padding-top: max(var(--safe-area-top), 20px);
+  }
+  
+  body {
+    padding-bottom: var(--safe-area-bottom);
+  }
 }
 
 /* Language visibility */

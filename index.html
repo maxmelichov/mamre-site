@@ -2,8 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="MamreVoice — a simple, clear and human text-to-speech experience.">
+    
+    <!-- Apple-specific meta tags for better iOS experience -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MamreVoice">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="apple-touch-startup-image" href="assets/logo.png">
+    
     <title>MamreVoice — Text to Speech</title>
     <link rel="stylesheet" href="./styles.css">
     <script defer src="./script.js"></script>
@@ -126,8 +134,9 @@
           <h2 class="lang-en">Demo Video</h2>
           <h2 class="lang-he" lang="he">סרטון הדגמה</h2>
           <div class="video-wrap" id="demoVideoWrap">
-            <video controls playsinline poster="assets/placeholder.jpg" class="video" id="demoVideo">
+            <video controls playsinline webkit-playsinline muted preload="metadata" poster="assets/placeholder.jpg" class="video" id="demoVideo">
               <source src="recordings/demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
             </video>
             <button class="fs-btn" id="btnDemoFullscreen" aria-label="Toggle fullscreen">⤢</button>
           </div>

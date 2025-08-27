@@ -48,8 +48,8 @@
   applyLang(initial);
   // API/Inference removed
 
-  // Demo fullscreen behavior
-  function isFullscreen() { return Boolean(document.fullscreenElement); }
+  // Demo fullscreen behavior with iOS support
+  function isFullscreen() { return Boolean(document.fullscreenElement || document.webkitFullscreenElement); }
   function updateFsUi() {
     if (!btnFs) return;
     const active = isFullscreen();
@@ -62,14 +62,43 @@
     if (!container) return;
     const doc = document;
     if (!isFullscreen()) {
-      (container.requestFullscreen && container.requestFullscreen());
+      // Try different fullscreen methods for better browser support
+      if (container.requestFullscreen) {
+        container.requestFullscreen();
+      } else if (container.webkitRequestFullscreen) {
+        container.webkitRequestFullscreen();
+      } else if (container.mozRequestFullScreen) {
+        container.mozRequestFullScreen();
+      } else if (container.msRequestFullscreen) {
+        container.msRequestFullscreen();
+      }
     } else {
-      (doc.exitFullscreen && doc.exitFullscreen());
+      if (doc.exitFullscreen) {
+        doc.exitFullscreen();
+      } else if (doc.webkitExitFullscreen) {
+        doc.webkitExitFullscreen();
+      } else if (doc.mozCancelFullScreen) {
+        doc.mozCancelFullScreen();
+      } else if (doc.msExitFullscreen) {
+        doc.msExitFullscreen();
+      }
     }
   }
   if (btnFs) btnFs.addEventListener('click', toggleFullscreen);
-  if (demoVideo) demoVideo.addEventListener('dblclick', toggleFullscreen);
+  if (demoVideo) {
+    // Prevent double-tap zoom on iOS
+    let lastTouchEnd = 0;
+    demoVideo.addEventListener('touchend', function (event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+        toggleFullscreen();
+      }
+      lastTouchEnd = now;
+    }, false);
+  }
   document.addEventListener('fullscreenchange', updateFsUi);
+  document.addEventListener('webkitfullscreenchange', updateFsUi);
 
   // Voice conversion table builder
   async function urlExists(url) {
@@ -146,8 +175,8 @@
           <div class="static-text lang-en">${examples[0].en}</div>
           <div class="static-text lang-he" lang="he">${examples[0].he}</div>
         </div>
-        <div class="vc-cell"><audio controls><source src="${firstTargetUrl}"></audio></div>
-        <div class="vc-cell"><audio controls><source src="${firstPredUrl}"></audio></div>
+        <div class="vc-cell"><audio controls preload="none" controlslist="nodownload"><source src="${firstTargetUrl}"></audio></div>
+        <div class="vc-cell"><audio controls preload="none" controlslist="nodownload"><source src="${firstPredUrl}"></audio></div>
       `;
       body.appendChild(freeRow);
     }
@@ -191,10 +220,45 @@
           <div class="static-text lang-en">${textContent.en}</div>
           <div class="static-text lang-he" lang="he">${textContent.he}</div>
         </div>
-        <div class="vc-cell"><audio controls><source src="${targetUrl}"></audio></div>
-        <div class="vc-cell"><audio controls><source src="${predUrl}"></audio></div>
+        <div class="vc-cell"><audio controls preload="none" controlslist="nodownload"><source src="${targetUrl}"></audio></div>
+        <div class="vc-cell"><audio controls preload="none" controlslist="nodownload"><source src="${predUrl}"></audio></div>
       `;
       body.appendChild(row);
+    }
+  }
+
+  // Mobile performance optimizations
+  function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+  // Optimize for mobile
+  if (isMobile()) {
+    // Reduce animation complexity on mobile
+    document.documentElement.style.setProperty('--animation-reduce', '1');
+    
+    // Add passive event listeners for better scrolling performance
+    document.addEventListener('touchstart', function() {}, { passive: true });
+    document.addEventListener('touchmove', function() {}, { passive: true });
+    
+    // Improve audio initialization for iOS
+    const iosAudioInit = () => {
+      // Create silent audio context to unlock audio on iOS
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      gainNode.gain.value = 0;
+      oscillator.start();
+      oscillator.stop();
+      
+      // Remove listener after first touch
+      document.removeEventListener('touchstart', iosAudioInit);
+    };
+    
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      document.addEventListener('touchstart', iosAudioInit, { once: true });
     }
   }
 
