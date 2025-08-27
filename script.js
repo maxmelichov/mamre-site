@@ -170,7 +170,7 @@
 
       // Use predefined text examples or fallback to generic text
       // Start from index 1 since index 0 is used for the main example above
-      const exampleIndex = i - 1; // Map audio file i to examples[i-1]
+      const exampleIndex = i - 1; // Map i=2 to examples[1], i=3 to examples[2], etc.
       const textContent = (exampleIndex < examples.length) ? examples[exampleIndex] : {
         en: `Example ${i}: Demonstrating voice conversion capabilities.`,
         he: `דוגמה ${i}: הדגמת יכולות המרת קול.`
