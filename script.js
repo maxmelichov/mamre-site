@@ -4,9 +4,7 @@
   const btnEn = document.getElementById('btn-lang-en');
   const btnHe = document.getElementById('btn-lang-he');
   const yearEl = document.getElementById('year');
-  const yearEl2 = document.getElementById('year2');
   const yearHeEl = document.getElementById('year-he');
-  const yearHeEl2 = document.getElementById('year-he2');
   const supportWarning = document.getElementById('tts-support-warning');
   const demoVideo = document.getElementById('demoVideo');
   const demoWrap = document.getElementById('demoVideoWrap');
@@ -19,9 +17,7 @@
 
   const currentYear = new Date().getFullYear();
   if (yearEl) yearEl.textContent = String(currentYear);
-  if (yearEl2) yearEl2.textContent = String(currentYear);
   if (yearHeEl) yearHeEl.textContent = String(currentYear);
-  if (yearHeEl2) yearHeEl2.textContent = String(currentYear);
 
   // Language handling
   function detectInitialLang() {
@@ -100,8 +96,8 @@
     // Static text examples with predefined content
     const examples = [
       {
-        en: "Hello from MamreVoice — making speech simple, clear, and human.",
-        he: "שלום מ-MamreVoice — הופך דיבור לפשוט, ברור ואנושי."
+        en: "ברוכים הבאים. כל מילה שאתם שומעים עכשיו—נוצרה על-ידי מודל שהופך טקסט לדיבור שפיתחתי. לראשונה, דיבור שנשמע באמת אנושי: מנגינה, הדגשות ונשימות—תחושה טבעית לחלוטין. והבשורה הגדולה: אתם קובעים איך זה יישמע. תנו למודל דוגמת קול—והוא ידמה אותה בדיוק מרשים, מהטון העמוק והרציני ועד הקליל והמחויך. אין עוד צורך לבחור קול כללי מתוך ספרייה. מעכשיו זה קול שנתפר בדיוק לעסק, למוצר ולסיפור שלכם. האזנה נעימה—ובואו נגלה יחד מה עוד אפשר ליצור עם הקול החדש שלכם.",
+        he: "ברוכים הבאים. כל מילה שאתם שומעים עכשיו—נוצרה על-ידי מודל שהופך טקסט לדיבור שפיתחתי. לראשונה, דיבור שנשמע באמת אנושי: מנגינה, הדגשות ונשימות—תחושה טבעית לחלוטין. והבשורה הגדולה: אתם קובעים איך זה יישמע. תנו למודל דוגמת קול—והוא ידמה אותה בדיוק מרשים, מהטון העמוק והרציני ועד הקליל והמחויך. אין עוד צורך לבחור קול כללי מתוך ספרייה. מעכשיו זה קול שנתפר בדיוק לעסק, למוצר ולסיפור שלכם. האזנה נעימה—ובואו נגלה יחד מה עוד אפשר ליצור עם הקול החדש שלכם."
       },
       {
         en: "The quality of voice synthesis has improved dramatically with deep learning.",
@@ -113,7 +109,18 @@
       }
     ];
 
-    // Skip the first row - start with numbered examples only
+    // First row: main example with the long Hebrew text
+    const freeRow = document.createElement('div');
+    freeRow.className = 'vc-row';
+    freeRow.innerHTML = `
+      <div class="vc-cell">
+        <div class="static-text lang-en">${examples[0].en}</div>
+        <div class="static-text lang-he" lang="he">${examples[0].he}</div>
+      </div>
+      <div class="vc-cell"><audio controls><source src="recordings/i_target.mp3" type="audio/mpeg"><source src="recordings/i_target.wav" type="audio/wav"><source src="recordings/i_target.ogg" type="audio/ogg"></audio></div>
+      <div class="vc-cell"><audio controls><source src="recordings/i_prediction.mp3" type="audio/mpeg"><source src="recordings/i_prediction.wav" type="audio/wav"><source src="recordings/i_prediction.ogg" type="audio/ogg"></audio></div>
+    `;
+    body.appendChild(freeRow);
 
     // Numbered examples if present
     const maxExamples = 20;
@@ -136,8 +143,9 @@
       if (!targetUrl || !predUrl) continue;
 
       // Use predefined text examples or fallback to generic text
+      // Start from index 1 since index 0 is used for the main example above
       const exampleIndex = Math.min(i, examples.length - 1);
-      const textContent = examples[exampleIndex] || {
+      const textContent = (i < examples.length) ? examples[i] : {
         en: `Example ${i}: Demonstrating voice conversion capabilities.`,
         he: `דוגמה ${i}: הדגמת יכולות המרת קול.`
       };
