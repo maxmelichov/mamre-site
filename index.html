@@ -11,7 +11,7 @@
   <body data-lang="en">
     <header class="site-header">
       <div class="container">
-        <div class="brand">Mamre<span class="accent">Voice</span></div>
+        <div class="brand"><img src="assets/logo.png" alt="MamreVoice" class="logo"></div>
         <nav class="lang-switch" aria-label="Language switcher">
           <button id="btn-lang-en" class="chip active" data-lang="en" aria-pressed="true">EN</button>
           <button id="btn-lang-he" class="chip" data-lang="he" aria-pressed="false">עב</button>
@@ -20,87 +20,63 @@
     </header>
 
     <main>
-      <section class="demo-video">
-        <div class="container">
-          <h2 class="lang-en">Demo video</h2>
-          <h2 class="lang-he" lang="he">סרטון הדגמה</h2>
-          <div class="video-wrap" id="demoVideoWrap">
-            <video controls playsinline poster="assets/placeholder.jpg" class="video" id="demoVideo">
-              <source src="recordings/demo.mp4" type="video/mp4">
-            </video>
-            <button class="fs-btn" id="btnDemoFullscreen" aria-label="Toggle fullscreen">⤢</button>
-          </div>
-        </div>
-      </section>
-
+      <!-- Welcome Section -->
       <section class="hero">
         <div class="container">
-          <h1 class="lang-en">Give your app a human voice</h1>
-          <h1 class="lang-he" lang="he">תנו לאפליקציה שלכם קול אנושי</h1>
-          <p class="sub lang-en">MamreVoice makes speech simple, clear, and human.</p>
-          <p class="sub lang-he" lang="he">MamreVoice הופך דיבור לפשוט, ברור ואנושי.</p>
+          <h1 class="lang-en">Welcome to MamreVoice</h1>
+          <h1 class="lang-he" lang="he">ברוכים הבאים ל-MamreVoice</h1>
+          <p class="sub lang-en">
+            MamreVoice is a cutting-edge text-to-speech and voice conversion system that brings human-like naturalness to synthetic speech. 
+            Built on advanced AI architecture, it delivers expressive, clear, and lifelike voice synthesis for applications ranging from 
+            accessibility tools to creative content generation.
+          </p>
+          <p class="sub lang-he" lang="he">
+            MamreVoice הוא מערכת מתקדמת להמרת טקסט לדיבור והמרת קול המביאה טבעיות אנושית לדיבור סינתטי.
+            הוא בנוי על ארכיטקטורה מתקדמת של בינה מלאכותית ומספק סינתזת קול ביטויית, ברורה וחיה עבור יישומים
+            החל מכלי נגישות ועד יצירת תוכן יצירתי.
+          </p>
         </div>
       </section>
 
+      <!-- Model Explanation Section -->
       <section class="about">
         <div class="container">
-          <h2 class="lang-en">About MamreVoice</h2>
-          <h2 class="lang-he" lang="he">על MamreVoice</h2>
+          <h2 class="lang-en">About the Model</h2>
+          <h2 class="lang-he" lang="he">על המודל</h2>
           <div class="story-grid">
             <div class="card">
               <p class="lang-en">
-                MamreVoice is a human‑sounding text‑to‑speech and voice conversion project.
-                Inspired by the story at the Oaks of Mamre, its focus is natural conversation: clear prosody,
-                lifelike pacing, and faithful timbre imitation.
+                MamreVoice is powered by DiffMamba, an innovative architecture that combines the efficiency of state-space models 
+                with the stability of diffusion processes. This hybrid approach enables high-quality voice synthesis with reduced 
+                computational overhead, making real-time voice conversion and text-to-speech possible on modern hardware.
               </p>
               <p class="lang-en">
-                It aims to deliver expressive, robust speech for products and creators — without sounding robotic.
+                The model excels in preserving prosody, maintaining speaker identity, and generating natural-sounding speech 
+                across multiple languages, with particular optimization for Hebrew language processing.
               </p>
               <p class="lang-he" lang="he">
-                MamreVoice הוא פרויקט דיבור טקסטואלי והמרת קול שנשמע אנושי.
-                ההשראה מגיעה מסיפור אלוני ממרא — דיבור טבעי של שיחה אנושית: פרוזודיה נכונה,
-                קצב דיבור חי ונאמנות לקול היעד.
+                MamreVoice מופעל על ידי DiffMamba, ארכיטקטורה חדשנית המשלבת את היעילות של מודלים של מרחב מצבים 
+                עם היציבות של תהליכי דיפוזיה. גישה היברידית זו מאפשרת סינתזת קול באיכות גבוהה עם עומס חישובי מופחת,
+                המאפשר המרת קול וטקסט לדיבור בזמן אמת על חומרה מודרנית.
               </p>
               <p class="lang-he" lang="he">
-                המטרה: דיבור עשיר ומדויק למוצרים וליוצרים — בלי להישמע רובוטי.
+                המודל מצטיין בשימור פרוזודיה, שמירה על זהות הדובר, ויצירת דיבור טבעי במספר שפות,
+                עם אופטימיזציה מיוחדת לעיבוד שפה עברית.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="technology">
-        <div class="container">
-          <h2 class="lang-en">Technology</h2>
-          <h2 class="lang-he" lang="he">טכנולוגיה</h2>
-          <div class="story-grid">
-            <div class="card">
-              <ul class="lang-en">
-                <li>Voice conversion and TTS with expressive prosody and stable generation</li>
-                <li>Phonikud preprocessing handles syllabification and special Hebrew letters (ג׳, צ׳, ז׳)</li>
-                <li>DiffMamba‑inspired blocks for sharper, more stable audio</li>
-                <li>Optimized inference for near real‑time performance on modern GPUs</li>
-              </ul>
-              <ul class="lang-he" lang="he">
-                <li>המרת קול ודיבור טקסטואלי עם פרוזודיה עשירה ויציבות גבוהה</li>
-                <li>קדם‑עיבוד Phonikud לטיפול בהברות ובאותיות המיוחדות (ג׳, צ׳, ז׳)</li>
-                <li>בלוקים בהשראת DiffMamba לאודיו חד ויציב</li>
-                <li>אופטימיזציה לזמני ריצה קרובים לזמן אמת על כרטיסים מודרניים</li>
-              </ul>
               <p class="muted small lang-en">
-                Paper (DiffMamba): <a href="https://lnkd.in/ds7-R-8d" target="_blank" rel="noopener">link</a>
-                · Try blocks: <a href="https://lnkd.in/dXfifdhg" target="_blank" rel="noopener">link</a>
+                Research Paper: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">DiffMamba Paper</a>
+                · Try DiffMamba Blocks: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">GitHub Repository</a>
               </p>
               <p class="muted small lang-he" lang="he">
-                מאמר (DiffMamba): <a href="https://lnkd.in/ds7-R-8d" target="_blank" rel="noopener">קישור</a>
-                · נסו את הבלוקים: <a href="https://lnkd.in/dXfifdhg" target="_blank" rel="noopener">קישור</a>
+                מאמר מחקר: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">מאמר DiffMamba</a>
+                · נסו בלוקי DiffMamba: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">מאגר GitHub</a>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-
+      <!-- Name Origin Section -->
       <section class="story">
         <div class="container">
           <h2 class="lang-en">Why "Mamre"?</h2>
@@ -112,6 +88,14 @@
               <p class="lang-en">
                 The name MamreVoice comes from the biblical story of Abraham at the oaks of Mamre (Genesis 18:1),
                 where the divine appears not as a distant voice from the heavens but as a simple, clear, human conversation.
+                This reflects our philosophy: technology should speak naturally, warmly, and authentically—like a conversation between friends.
+              </p>
+              <blockquote class="lang-en">
+                "And the Lord appeared to him by the oaks of Mamre, as he sat at the door of his tent in the heat of the day." (Genesis 18:1)
+              </blockquote>
+              <p class="lang-en">
+                The moment is intimate and human, emphasizing presence and dialogue rather than distance. MamreVoice aspires to the same spirit: 
+                speech technology that feels close, clear, and human.
               </p>
               <p class="lang-he" lang="he">
                 השם MamreVoice מגיע מהסיפור התנ"כי על אברהם באלוני ממרא, כפי שמסופר בספר בראשית:
@@ -122,8 +106,23 @@
               <p class="lang-he" lang="he">
                 בפסוק הזה מתואר הרגע שבו אלוהים מופיע לאברהם בדרך ייחודית: במקום לדבר אליו ישירות מהשמים,
                 הוא מתגלה אליו דרך שלושה שליחים, בדמות אנשים רגילים. הדיבור האלוהי הופך כאן לשיחה פשוטה, ברורה ואנושית.
+                זה משקף את הפילוסופיה שלנו: טכנולוגיה צריכה לדבר באופן טבעי, חם ואותנטי—כמו שיחה בין חברים.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Demo Video Section -->
+      <section class="demo-video">
+        <div class="container">
+          <h2 class="lang-en">Demo Video</h2>
+          <h2 class="lang-he" lang="he">סרטון הדגמה</h2>
+          <div class="video-wrap" id="demoVideoWrap">
+            <video controls playsinline poster="assets/placeholder.jpg" class="video" id="demoVideo">
+              <source src="recordings/demo.mp4" type="video/mp4">
+            </video>
+            <button class="fs-btn" id="btnDemoFullscreen" aria-label="Toggle fullscreen">⤢</button>
           </div>
         </div>
       </section>
@@ -175,7 +174,8 @@
 
     <noscript>
       <div class="notice">
-        JavaScript is required for language switching and TTS preview.
+        <p class="lang-en">JavaScript is required for language switching and TTS preview.</p>
+        <p class="lang-he" lang="he">נדרש JavaScript כדי להחליף שפה ולהציג תצוגה מקדימה של הדיבור.</p>
       </div>
     </noscript>
   </body>

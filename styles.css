@@ -43,6 +43,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 }
 .brand { font-weight: 700; letter-spacing: 0.2px; }
 .brand .accent { color: var(--brand); }
+.brand .logo { height: 36px; display: block; }
 
 .lang-switch { display: flex; gap: 8px; }
 .chip {

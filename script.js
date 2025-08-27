@@ -13,10 +13,7 @@
   const voiceSelect = null; // API/controls removed
   const rateInput = null;
   const pitchInput = null;
-  const getTextInput = () => document.getElementById('ttsText');
-  const btnPlay = null;
-  const btnStop = null;
-  // Inference/API removed
+  // Inference/API removed - text is now static
 
   const currentYear = new Date().getFullYear();
   if (yearEl) yearEl.textContent = String(currentYear);
@@ -38,27 +35,11 @@
     btnHe.classList.toggle('active', lang === 'he');
     btnHe.setAttribute('aria-pressed', String(lang === 'he'));
     localStorage.setItem('mamre_lang', lang);
-    setDefaultText(lang);
-    // voices removed
+    // voices removed - no text input to update
   }
 
   btnEn.addEventListener('click', () => applyLang('en'));
   btnHe.addEventListener('click', () => applyLang('he'));
-
-  // No API mode
-
-  function setDefaultText(lang) {
-    const textInput = getTextInput();
-    if (!textInput) return;
-    if (textInput.value && textInput.value.trim().length > 0) return; // don't override user text
-    if (lang === 'he') {
-      textInput.placeholder = 'הקלידו טקסט להשמעה...';
-      textInput.value = 'שלום, זהו MamreVoice — דיבור פשוט, ברור ואנושי.';
-    } else {
-      textInput.placeholder = 'Type text to speak...';
-      textInput.value = 'Hello from MamreVoice — making speech simple, clear, and human.';
-    }
-  }
 
   function noop() { /* removed */ }
 
@@ -68,9 +49,7 @@
   // API/Inference removed
 
   // Demo fullscreen behavior
-  function isFullscreen() {
-    return Boolean(document.fullscreenElement);
-  }
+  function isFullscreen() { return Boolean(document.fullscreenElement); }
   function updateFsUi() {
     if (!btnFs) return;
     const active = isFullscreen();
@@ -114,16 +93,35 @@
     if (!body) return;
     body.innerHTML = '';
 
-    // First row: free text input
+    // Static text examples with predefined content
+    const examples = [
+      {
+        en: "Hello from MamreVoice — making speech simple, clear, and human.",
+        he: "שלום מ-MamreVoice — הופך דיבור לפשוט, ברור ואנושי."
+      },
+      {
+        en: "The quality of voice synthesis has improved dramatically with deep learning.",
+        he: "איכות סינתזת הקול השתפרה באופן דרמטי עם למידה עמוקה."
+      },
+      {
+        en: "Natural language processing enables better understanding of text.",
+        he: "עיבוד שפה טבעית מאפשר הבנה טובה יותר של טקסט."
+      }
+    ];
+
+    // First row: main example
+    const currentLang = bodyEl.getAttribute('data-lang') || 'en';
     const freeRow = document.createElement('div');
     freeRow.className = 'vc-row';
     freeRow.innerHTML = `
-      <div class="vc-cell"><textarea id="ttsText" placeholder="Enter text..."></textarea></div>
+      <div class="vc-cell">
+        <div class="static-text lang-en">${examples[0].en}</div>
+        <div class="static-text lang-he" lang="he">${examples[0].he}</div>
+      </div>
       <div class="vc-cell"><audio controls><source src="recordings/i_target.mp3" type="audio/mpeg"><source src="recordings/i_target.wav" type="audio/wav"><source src="recordings/i_target.ogg" type="audio/ogg"></audio></div>
       <div class="vc-cell"><audio controls><source src="recordings/i_prediction.mp3" type="audio/mpeg"><source src="recordings/i_prediction.wav" type="audio/wav"><source src="recordings/i_prediction.ogg" type="audio/ogg"></audio></div>
     `;
     body.appendChild(freeRow);
-    setDefaultText(bodyEl.getAttribute('data-lang') || 'en');
 
     // Numbered examples if present
     const maxExamples = 20;
@@ -145,10 +143,20 @@
       const predUrl = await pickFirstExisting(predCandidates);
       if (!targetUrl || !predUrl) continue;
 
+      // Use predefined text examples or fallback to generic text
+      const exampleIndex = Math.min(i, examples.length - 1);
+      const textContent = examples[exampleIndex] || {
+        en: `Example ${i}: Demonstrating voice conversion capabilities.`,
+        he: `דוגמה ${i}: הדגמת יכולות המרת קול.`
+      };
+
       const row = document.createElement('div');
       row.className = 'vc-row';
       row.innerHTML = `
-        <div class="vc-cell"><textarea placeholder="Example ${i} text"></textarea></div>
+        <div class="vc-cell">
+          <div class="static-text lang-en">${textContent.en}</div>
+          <div class="static-text lang-he" lang="he">${textContent.he}</div>
+        </div>
         <div class="vc-cell"><audio controls><source src="${targetUrl}"></audio></div>
         <div class="vc-cell"><audio controls><source src="${predUrl}"></audio></div>
       `;
