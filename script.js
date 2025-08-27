@@ -166,6 +166,10 @@
 
       const targetUrl = await pickFirstExisting(targetCandidates);
       const predUrl = await pickFirstExisting(predCandidates);
+      
+      // Debug: log what files were found for each example
+      console.log(`Example ${i} - Target URL:`, targetUrl, 'Pred URL:', predUrl);
+      
       if (!targetUrl || !predUrl) continue;
 
       // Use predefined text examples or fallback to generic text
