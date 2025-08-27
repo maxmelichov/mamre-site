@@ -109,22 +109,40 @@
       }
     ];
 
-    // First row: main example with the long Hebrew text
-    const freeRow = document.createElement('div');
-    freeRow.className = 'vc-row';
-    freeRow.innerHTML = `
-      <div class="vc-cell">
-        <div class="static-text lang-en">${examples[0].en}</div>
-        <div class="static-text lang-he" lang="he">${examples[0].he}</div>
-      </div>
-      <div class="vc-cell"><audio controls><source src="recordings/i_target.mp3" type="audio/mpeg"><source src="recordings/i_target.wav" type="audio/wav"><source src="recordings/i_target.ogg" type="audio/ogg"></audio></div>
-      <div class="vc-cell"><audio controls><source src="recordings/i_prediction.mp3" type="audio/mpeg"><source src="recordings/i_prediction.wav" type="audio/wav"><source src="recordings/i_prediction.ogg" type="audio/ogg"></audio></div>
-    `;
-    body.appendChild(freeRow);
+    // First row: main example with the long Hebrew text (using 1_target and 1_prediction)
+    const firstTargetCandidates = [
+      'recordings/1_target.mp3',
+      'recordings/1_target.wav',
+      'recordings/1_target.m4a',
+      'recordings/1_target.ogg',
+    ];
+    const firstPredCandidates = [
+      'recordings/1_prediction.mp3',
+      'recordings/1_prediction.wav',
+      'recordings/1_prediction.m4a',
+      'recordings/1_prediction.ogg',
+    ];
 
-    // Numbered examples if present
+    const firstTargetUrl = await pickFirstExisting(firstTargetCandidates);
+    const firstPredUrl = await pickFirstExisting(firstPredCandidates);
+    
+    if (firstTargetUrl && firstPredUrl) {
+      const freeRow = document.createElement('div');
+      freeRow.className = 'vc-row';
+      freeRow.innerHTML = `
+        <div class="vc-cell">
+          <div class="static-text lang-en">${examples[0].en}</div>
+          <div class="static-text lang-he" lang="he">${examples[0].he}</div>
+        </div>
+        <div class="vc-cell"><audio controls><source src="${firstTargetUrl}"></audio></div>
+        <div class="vc-cell"><audio controls><source src="${firstPredUrl}"></audio></div>
+      `;
+      body.appendChild(freeRow);
+    }
+
+    // Numbered examples if present (starting from 2 since 1 is used above)
     const maxExamples = 20;
-    for (let i = 1; i <= maxExamples; i++) {
+    for (let i = 2; i <= maxExamples; i++) {
       const targetCandidates = [
         `recordings/${i}_target.mp3`,
         `recordings/${i}_target.wav`,
