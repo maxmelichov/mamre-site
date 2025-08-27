@@ -39,11 +39,11 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 72px;
 }
 .brand { font-weight: 700; letter-spacing: 0.2px; }
 .brand .accent { color: var(--brand); }
-.brand .logo { height: 50px; width: auto; display: block; object-fit: contain; }
+.brand .logo { height: 60px; width: auto; display: block; object-fit: contain; }
 
 .lang-switch { display: flex; gap: 8px; }
 .chip {
@@ -205,8 +205,8 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   .hero { padding: 32px 0 12px; text-align: center; }
   .hero .sub { font-size: 14px; line-height: 1.5; }
   
-  .brand .logo { height: 38px; }
-  .site-header .container { height: 56px; }
+  .brand .logo { height: 45px; }
+  .site-header .container { height: 64px; }
   .lang-switch { gap: 6px; }
   
   .vc-row { 
