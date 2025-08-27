@@ -43,7 +43,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 }
 .brand { font-weight: 700; letter-spacing: 0.2px; }
 .brand .accent { color: var(--brand); }
-.brand .logo { height: 28px; width: auto; display: block; object-fit: contain; }
+.brand .logo { height: 40px; width: auto; display: block; object-fit: contain; }
 
 .lang-switch { display: flex; gap: 8px; }
 .chip {
@@ -63,9 +63,10 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 .story { padding: 24px 0 8px; }
 .story-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .about { padding: 8px 0 8px; }
+.model-grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+.model-text { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.model-image { }
 .technology { padding: 8px 0 24px; }
-.figures { padding: 8px 0 24px; }
-.fig-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .fig-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
 .fig-card img { display: block; max-width: 100%; height: auto; border-radius: 8px; }
 
@@ -139,7 +140,7 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   .hero { padding-top: 64px; }
   .hero h1 { font-size: 56px; }
   .story-grid { grid-template-columns: 1fr 1fr; }
-  .fig-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .model-grid { grid-template-columns: 1fr 1fr; }
   .vc-row { grid-template-columns: 2fr 1fr 1fr; }
 }
 

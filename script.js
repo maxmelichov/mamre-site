@@ -4,7 +4,9 @@
   const btnEn = document.getElementById('btn-lang-en');
   const btnHe = document.getElementById('btn-lang-he');
   const yearEl = document.getElementById('year');
+  const yearEl2 = document.getElementById('year2');
   const yearHeEl = document.getElementById('year-he');
+  const yearHeEl2 = document.getElementById('year-he2');
   const supportWarning = document.getElementById('tts-support-warning');
   const demoVideo = document.getElementById('demoVideo');
   const demoWrap = document.getElementById('demoVideoWrap');
@@ -17,7 +19,9 @@
 
   const currentYear = new Date().getFullYear();
   if (yearEl) yearEl.textContent = String(currentYear);
+  if (yearEl2) yearEl2.textContent = String(currentYear);
   if (yearHeEl) yearHeEl.textContent = String(currentYear);
+  if (yearHeEl2) yearHeEl2.textContent = String(currentYear);
 
   // Language handling
   function detectInitialLang() {
@@ -109,19 +113,7 @@
       }
     ];
 
-    // First row: main example
-    const currentLang = bodyEl.getAttribute('data-lang') || 'en';
-    const freeRow = document.createElement('div');
-    freeRow.className = 'vc-row';
-    freeRow.innerHTML = `
-      <div class="vc-cell">
-        <div class="static-text lang-en">${examples[0].en}</div>
-        <div class="static-text lang-he" lang="he">${examples[0].he}</div>
-      </div>
-      <div class="vc-cell"><audio controls><source src="recordings/i_target.mp3" type="audio/mpeg"><source src="recordings/i_target.wav" type="audio/wav"><source src="recordings/i_target.ogg" type="audio/ogg"></audio></div>
-      <div class="vc-cell"><audio controls><source src="recordings/i_prediction.mp3" type="audio/mpeg"><source src="recordings/i_prediction.wav" type="audio/wav"><source src="recordings/i_prediction.ogg" type="audio/ogg"></audio></div>
-    `;
-    body.appendChild(freeRow);
+    // Skip the first row - start with numbered examples only
 
     // Numbered examples if present
     const maxExamples = 20;
