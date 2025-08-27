@@ -28,9 +28,9 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: static;
+  top: auto;
+  z-index: 1;
   background: rgba(11,12,16,0.8);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
@@ -43,7 +43,7 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 }
 .brand { font-weight: 700; letter-spacing: 0.2px; }
 .brand .accent { color: var(--brand); }
-.brand .logo { height: 36px; display: block; }
+.brand .logo { height: 28px; width: auto; display: block; object-fit: contain; }
 
 .lang-switch { display: flex; gap: 8px; }
 .chip {
