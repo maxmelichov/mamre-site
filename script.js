@@ -96,16 +96,20 @@
     // Static text examples with predefined content
     const examples = [
       {
-        en: "ברוכים הבאים. כל מילה שאתם שומעים עכשיו נוצרה על-ידי מודל שהופך טקסט לדיבור שפיתחתי. לראשונה, דיבור שנשמע באמת אנושי: מנגינה, הדגשות ונשימות תחושה טבעית לחלוטין. והבשורה הגדולה: אתם קובעים איך זה יישמע. תנו למודל דוגמת קול והוא ידמה אותה בדיוק מרשים, מהטון העמוק והרציני ועד הקליל והמחויך. אין עוד צורך לבחור קול כללי מתוך ספרייה. מעכשיו זה קול שנתפר בדיוק לעסק, למוצר ולסיפור שלכם. האזנה נעימה ובואו נגלה יחד מה עוד אפשר ליצור עם הקול החדש שלכם.",
-        he: "ברוכים הבאים. כל מילה שאתם שומעים עכשיו נוצרה על-ידי מודל שהופך טקסט לדיבור שפיתחתי. לראשונה, דיבור שנשמע באמת אנושי: מנגינה, הדגשות ונשימות תחושה טבעית לחלוטין. והבשורה הגדולה: אתם קובעים איך זה יישמע. תנו למודל דוגמת קול והוא ידמה אותה בדיוק מרשים, מהטון העמוק והרציני ועד הקליל והמחויך. אין עוד צורך לבחור קול כללי מתוך ספרייה. מעכשיו זה קול שנתפר בדיוק לעסק, למוצר ולסיפור שלכם. האזנה נעימה ובואו נגלה יחד מה עוד אפשר ליצור עם הקול החדש שלכם."
+        en: "ברוכים הבאים. כל מילה שאתם שומעים עכשיו נוצרה על-ידי מודל קול שפיתחתי שהופך טקסט לדיבור. לראשונה, דיבור שנשמע באמת אנושי: מהנגינה, ההדגשות ונשימות תחושה טבעית לחלוטין. והבשורה הגדולה היא שאתם קובעים איך זה יישמע. תנו למודל דוגמת קול קצרה של מספר שניות והוא ידמה אותה בצורה בדיוקת ומרשימה, מהטון העמוק והרציני ועד הקליל והמחויך. אין עוד צורך לבחור קול כללי מתוך סיפרייה. מעכשיו זה קול שנתפר בדיוק לעסק, למוצר ולסיפור שלכם. האזנה נעימה ובואו נגלה יחד מה עוד אפשר ליצור עם הקול החדש שלכם.",
+        he: "ברוכים הבאים. כל מילה שאתם שומעים עכשיו נוצרה על-ידי מודל קול שפיתחתי שהופך טקסט לדיבור. לראשונה, דיבור שנשמע באמת אנושי: מהנגינה, ההדגשות ונשימות תחושה טבעית לחלוטין. והבשורה הגדולה היא שאתם קובעים איך זה יישמע. תנו למודל דוגמת קול קצרה של מספר שניות והוא ידמה אותה בצורה בדיוקת ומרשימה, מהטון העמוק והרציני ועד הקליל והמחויך. אין עוד צורך לבחור קול כללי מתוך סיפרייה. מעכשיו זה קול שנתפר בדיוק לעסק, למוצר ולסיפור שלכם. האזנה נעימה ובואו נגלה יחד מה עוד אפשר ליצור עם הקול החדש שלכם."
       },
       {
-        en: "The quality of voice synthesis has improved dramatically with deep learning.",
-        he: "איכות סינתזת הקול השתפרה באופן דרמטי עם למידה עמוקה."
+        en: "!אם אתם או אתן שואלים או שואלות אם המודל עובד עבור קולות של נשים, אז התשובה היא כן",
+        he: "!אם אתם או אתן שואלים או שואלות אם המודל עובד עבור קולות של נשים, אז התשובה היא כן",
       },
       {
-        en: "Natural language processing enables better understanding of text.",
-        he: "עיבוד שפה טבעית מאפשר הבנה טובה יותר של טקסט."
+        en: "ʔomʁˈim ʃeʃo'wa'ʁma bebeʔˈeʁ ʃˈeva haχˈi teʔimˈa, mˈa hasˈod ʃelaχˈem",
+        he: "ʔomʁˈim ʃeʃo'wa'ʁma bebeʔˈeʁ ʃˈeva haχˈi teʔimˈa, mˈa hasˈod ʃelaχˈem"
+      },
+      {
+        en: "jeʁuʃalˈajim hˈi ʔˈiʁ ʔatikˈa vaχaʃuvˈa bimjuχˈad, ʃemeχilˈa betoχˈa ʃχavˈot ʁabˈot ʃˈel histˈoʁja, taʁbˈut veʁuχanijˈut ʃenimʃaχˈot ʔalfˈej ʃanˈim, vehˈi mehavˈa mokˈed meʁkazˈi liʃlˈoʃet hadatˈot haɡdolˈot, jahadˈut, natsʁˈut veʔislˈam. ʃemitχabʁˈot jˈaχad bemakˈom ʔeχˈad jiχudˈi, malˈe ʔenˈeʁɡija umuʁkavˈut, ʃˈam ʔefʃˈaʁ limtsˈo ʔataʁˈim kdoʃˈim, ʃχunˈot ʔatikˈot, veʃvakˈim tsivʔonijˈim, vekˈol pinˈa mesapˈeʁet sipˈuʁ ʃˈel tkufˈot ʃonˈot, ʔanaʃˈim ʃonˈim veʔejʁuʔˈim ʃehiʃpˈiʔu ʔˈal hahistˈoʁja ʃˈel haʔolˈam kulˈo, mˈa ʃehofˈeχ ʔet jeʁuʃalˈajim lˈo ʁˈak leʔˈiʁ ɡeʔoɡʁˈafit ʔˈela ɡˈam lemeʁkˈaz ʃˈel zehˈut, ʔemunˈa vezikaʁˈon kolektˈivi ʃemamʃˈiχ leʔoʁˈeʁ haʃʁaʔˈa ulχabˈeʁ bˈen ʔanaʃˈim meʁˈeka ʃonˈe mikˈol kitsvˈot tevˈel. namʃˈiχ lehakʁˈi ʔˈet hatˈekst lidvaʁˈim ktsˈat jotˈeʁ muʁkavˈim. lemaʃˈal tsfaʁdea ʃets'afa baemajˈim ʔoχˈelet tˈeʁed bizmˈan ʃehˈu tsafˈa besˈeʁet tˈov. ʔimˈa ʃelˈo ʔamʁˈa bˈo teʁˈed lehavˈi χatˈif tʃitˈus mahˈeʁ kˈi ʔaχotˈo ʁˈatsa meʔˈod mahˈeʁ",
+        he: "jeʁuʃalˈajim hˈi ʔˈiʁ ʔatikˈa vaχaʃuvˈa bimjuχˈad, ʃemeχilˈa betoχˈa ʃχavˈot ʁabˈot ʃˈel histˈoʁja, taʁbˈut veʁuχanijˈut ʃenimʃaχˈot ʔalfˈej ʃanˈim, vehˈi mehavˈa mokˈed meʁkazˈi liʃlˈoʃet hadatˈot haɡdolˈot, jahadˈut, natsʁˈut veʔislˈam. ʃemitχabʁˈot jˈaχad bemakˈom ʔeχˈad jiχudˈi, malˈe ʔenˈeʁɡija umuʁkavˈut, ʃˈam ʔefʃˈaʁ limtsˈo ʔataʁˈim kdoʃˈim, ʃχunˈot ʔatikˈot, veʃvakˈim tsivʔonijˈim, vekˈol pinˈa mesapˈeʁet sipˈuʁ ʃˈel tkufˈot ʃonˈot, ʔanaʃˈim ʃonˈim veʔejʁuʔˈim ʃehiʃpˈiʔu ʔˈal hahistˈoʁja ʃˈel haʔolˈam kulˈo, mˈa ʃehofˈeχ ʔet jeʁuʃalˈajim lˈo ʁˈak leʔˈiʁ ɡeʔoɡʁˈafit ʔˈela ɡˈam lemeʁkˈaz ʃˈel zehˈut, ʔemunˈa vezikaʁˈon kolektˈivi ʃemamʃˈiχ leʔoʁˈeʁ haʃʁaʔˈa ulχabˈeʁ bˈen ʔanaʃˈim meʁˈeka ʃonˈe mikˈol kitsvˈot tevˈel. namʃˈiχ lehakʁˈi ʔˈet hatˈekst lidvaʁˈim ktsˈat jotˈeʁ muʁkavˈim. lemaʃˈal tsfaʁdea ʃets'afa baemajˈim ʔoχˈelet tˈeʁed bizmˈan ʃehˈu tsafˈa besˈeʁet tˈov. ʔimˈa ʃelˈo ʔamʁˈa bˈo teʁˈed lehavˈi χatˈif tʃitˈus mahˈeʁ kˈi ʔaχotˈo ʁˈatsa meʔˈod mahˈeʁ",
       }
     ];
 
