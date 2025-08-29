@@ -28,90 +28,88 @@
     </header>
 
     <main>
-      <!-- Welcome Section -->
-      <section class="hero">
+      <!-- Unified Hero Section -->
+      <section class="hero-unified">
         <div class="container">
-          <h1 class="lang-en">Welcome to MamreVoice</h1>
-          <h1 class="lang-he" lang="he">ברוכים הבאים ל-MamreVoice</h1>
-          <p class="sub lang-en">
-            MamreVoice is a cutting-edge text-to-speech and voice conversion system that brings human-like naturalness to synthetic speech. 
-            Built on advanced AI architecture, it delivers expressive, clear, and lifelike voice synthesis for applications ranging from 
-            accessibility tools to creative content generation.
-          </p>
-          <p class="sub lang-he" lang="he">
-            MamreVoice הוא מערכת מתקדמת להמרת טקסט לדיבור והמרת קול המביאה טבעיות אנושית לדיבור סינתטי.
-            הוא בנוי על ארכיטקטורה מתקדמת של בינה מלאכותית ומספק סינתזת קול ביטויית, ברורה וחיה עבור יישומים
-            החל מכלי נגישות ועד יצירת תוכן יצירתי.
-          </p>
-        </div>
-      </section>
-
-      <!-- Model Explanation Section -->
-      <section class="about">
-        <div class="container">
-          <h2 class="lang-en">About the Model</h2>
-          <h2 class="lang-he" lang="he">על המודל</h2>
-          <div class="model-grid">
-            <div class="model-text">
-              <p class="lang-en">
-                MamreVoice is powered by DiffMamba, an innovative architecture that combines the efficiency of state-space models 
-                with the stability of diffusion processes. This hybrid approach enables high-quality voice synthesis with reduced 
-                computational overhead, making real-time voice conversion and text-to-speech possible on modern hardware.
+          <!-- Main Hero -->
+          <div class="hero-main">
+            <h1 class="lang-en">MamreVoice</h1>
+            <h1 class="lang-he" lang="he">MamreVoice</h1>
+            <p class="hero-subtitle lang-en">Advanced Hebrew Text-to-Speech with Natural Pronunciation</p>
+            <p class="hero-subtitle lang-he" lang="he">המרת טקסט לדיבור עברי מתקדמת עם הגייה טבעית</p>
+            
+            <div class="hero-philosophy">
+              <p class="philosophy-text lang-en">
+                <strong>"Mamre"</strong> - From the biblical story where divine communication appears as simple, human conversation. 
+                Technology should speak naturally, warmly, and authentically.
               </p>
-              <p class="lang-en">
-                The model excels in preserving prosody, maintaining speaker identity, and generating natural-sounding speech 
-                across multiple languages, with particular optimization for Hebrew language processing.
-              </p>
-              <p class="lang-he" lang="he">
-                MamreVoice מופעל על ידי DiffMamba, ארכיטקטורה חדשנית המשלבת את היעילות של מודלים של מרחב מצבים 
-                עם היציבות של תהליכי דיפוזיה. גישה היברידית זו מאפשרת סינתזת קול באיכות גבוהה עם עומס חישובי מופחת,
-                המאפשר המרת קול וטקסט לדיבור בזמן אמת על חומרה מודרנית.
-              </p>
-              <p class="lang-he" lang="he">
-                המודל מצטיין בשימור פרוזודיה, שמירה על זהות הדובר, ויצירת דיבור טבעי במספר שפות,
-                עם אופטימיזציה מיוחדת לעיבוד שפה עברית.
-              </p>
-              <p class="muted small lang-en">
-                Research Paper: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">DiffMamba Paper</a>
-                · Try DiffMamba Blocks: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">GitHub Repository</a>
-              </p>
-              <p class="muted small lang-he" lang="he">
-                מאמר מחקר: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">מאמר DiffMamba</a>
-                · נסו בלוקי DiffMamba: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">מאגר GitHub</a>
+              <p class="philosophy-text lang-he" lang="he">
+                <strong>"ממרא"</strong> - מהסיפור התנ"כי שבו תקשורת אלוהית מתגלה כשיחה אנושית פשוטה. 
+                טכנולוגיה צריכה לדבר באופן טבעי, חם ואותנטי.
               </p>
             </div>
-            <div class="model-image">
-              <figure class="fig-card">
-                <img src="assets/diffmamba.PNG" alt="DiffMamba architecture" />
-                <figcaption class="muted small lang-en">DiffMamba Architecture</figcaption>
-                <figcaption class="muted small lang-he" lang="he">ארכיטקטורה של DiffMamba</figcaption>
-              </figure>
+          </div>
+          
+          <!-- Integrated Features & Model Info -->
+          <div class="hero-content-grid">
+            <div class="features-section">
+              <h2 class="section-title lang-en">What Makes MamreVoice Special</h2>
+              <h2 class="section-title lang-he" lang="he">מה הופך את MamreVoice למיוחד</h2>
+              
+              <div class="feature-cards">
+                <div class="feature-card">
+                  <div class="feature-icon">🧠</div>
+                  <h3 class="lang-en">DiffMamba Architecture</h3>
+                  <h3 class="lang-he" lang="he">ארכיטקטורת DiffMamba</h3>
+                  <p class="lang-en">Combines state-space efficiency with diffusion stability for superior voice synthesis</p>
+                  <p class="lang-he" lang="he">משלב יעילות מרחב-מצבים עם יציבות דיפוזיה לסינתזת קול מעולה</p>
+                </div>
+                
+                <div class="feature-card">
+                  <div class="feature-icon">🎯</div>
+                  <h3 class="lang-en">Hebrew Optimization</h3>
+                  <h3 class="lang-he" lang="he">אופטימיזציה לעברית</h3>
+                  <p class="lang-en">Preserves Hebrew's complex vowel marking system (nikud) with natural prosody</p>
+                  <p class="lang-he" lang="he">שומר על מערכת הניקוד המורכבת של העברית עם פרוזודיה טבעית</p>
+                </div>
+                
+                <div class="feature-card">
+                  <div class="feature-icon">⚡</div>
+                  <h3 class="lang-en">High Performance</h3>
+                  <h3 class="lang-he" lang="he">ביצועים גבוהים</h3>
+                  <p class="lang-en">Variable speaking rates with phoneme reading - real-time synthesis on modern hardware</p>
+                  <p class="lang-he" lang="he">קצבי דיבור משתנים עם קריאת פונמות - סינתזה בזמן אמת על חומרה מודרנית</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="model-section">
+              <div class="model-showcase">
+                <img src="assets/diffmamba.PNG" alt="DiffMamba Architecture" class="model-image" />
+                <div class="model-details">
+                  <h3 class="lang-en">DiffMamba Architecture</h3>
+                  <h3 class="lang-he" lang="he">ארכיטקטורת DiffMamba</h3>
+                  <p class="lang-en">Innovative hybrid approach enabling high-quality voice synthesis with reduced computational overhead</p>
+                  <p class="lang-he" lang="he">גישה היברידית חדשנית המאפשרת סינתזת קול באיכות גבוהה עם עומס חישובי מופחת</p>
+                  
+                  <div class="model-links">
+                    <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener" class="research-link lang-en">
+                      📄 Research Paper
+                    </a>
+                    <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener" class="github-link lang-en">
+                      💻 GitHub Repository
+                    </a>
+                    <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener" class="research-link lang-he">
+                      📄 מאמר מחקר
+                    </a>
+                    <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener" class="github-link lang-he">
+                      💻 מאגר GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- Name Origin Section -->
-      <section class="story">
-        <div class="container">
-          <h2 class="lang-en">Why "Mamre"?</h2>
-          <h2 class="lang-he" lang="he">למה "Mamre"?</h2>
-                  <div class="story-grid">
-          <div class="card">
-            <h3 class="lang-en">A conversation, not a proclamation</h3>
-            <h3 class="lang-he" lang="he">שיחה אנושית, לא הצהרה מרוחקת</h3>
-            <p class="lang-en">
-              The name MamreVoice comes from the biblical story of Abraham at the oaks of Mamre (Genesis 18:1),
-              where the divine appears not as a distant voice from the heavens but as a simple, clear, human conversation.
-              This reflects our philosophy: technology should speak naturally, warmly, and authentically.
-            </p>
-            <p class="lang-he" lang="he">
-              השם MamreVoice מגיע מהסיפור התנ"כי על אברהם באלוני ממרא (בראשית י"ח, א).
-              במקום לדבר מהשמים, האלוהי מתגלה כשיחה פשוטה, ברורה ואנושית.
-              זה משקף את הפילוסופיה שלנו: טכנולוגיה צריכה לדבר באופן טבעי, חם ואותנטי.
-            </p>
-          </div>
-        </div>
         </div>
       </section>
 
