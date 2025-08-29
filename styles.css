@@ -433,6 +433,15 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
   outline-offset: 2px;
 }
 
+.audio-fallback {
+  font-size: 12px;
+  color: var(--muted-dark);
+  text-align: center;
+  font-style: italic;
+  margin: 8px 0;
+  opacity: 0.8;
+}
+
 .comparison-note {
   background: linear-gradient(135deg, rgba(109, 211, 255, 0.1), rgba(63, 181, 238, 0.05));
   border: 1px solid rgba(109, 211, 255, 0.2);

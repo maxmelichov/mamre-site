@@ -339,9 +339,27 @@
         container.style.opacity = '1';
       });
       
-      audio.addEventListener('error', () => {
+      audio.addEventListener('error', (e) => {
+        console.warn('Audio load error:', audio.src, e);
         container.style.opacity = '0.5';
         container.style.filter = 'grayscale(1)';
+        
+        // Show fallback message if it exists
+        const fallback = container.querySelector('.audio-fallback');
+        if (fallback) {
+          fallback.style.display = 'block';
+          fallback.style.color = '#ef4444';
+          fallback.textContent = 'Audio file could not be loaded';
+        }
+      });
+      
+      // Add debug info for testing
+      audio.addEventListener('loadstart', () => {
+        console.log('Loading audio:', audio.src);
+      });
+      
+      audio.addEventListener('canplay', () => {
+        console.log('Audio ready to play:', audio.src);
       });
     });
   }
