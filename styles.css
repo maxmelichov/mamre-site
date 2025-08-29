@@ -141,74 +141,68 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
   margin-left: 8px;
 }
 
-.phonikud-grid {
+/* Phonikud table styles */
+.phonikud-table {
   display: grid;
-  gap: 24px;
+  gap: 8px;
   margin-bottom: 24px;
 }
 
-.phonikud-example {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
-  overflow: hidden;
+.phonikud-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 12px;
 }
 
-.example-header h3 {
-  margin: 0 0 12px 0;
-  color: var(--brand);
-  font-size: 18px;
+.phonikud-header {
+  color: var(--muted);
+}
+
+.phonikud-cell {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 60px;
+  overflow-y: auto;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.phonikud-cell.text-cell {
+  padding: 16px;
 }
 
 .example-text {
-  margin-bottom: 16px;
-  padding: 12px;
-  background: rgba(109, 211, 255, 0.05);
-  border-radius: 8px;
-  border-left: 3px solid var(--brand);
+  margin: 0;
 }
 
-.example-text p {
-  margin: 4px 0;
-  line-height: 1.5;
+.hebrew-text {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--brand);
+  line-height: 1.4;
 }
 
 .example-text .translation {
   color: var(--muted);
   font-style: italic;
   font-size: 14px;
+  margin: 4px 0;
+  line-height: 1.4;
 }
 
-.model-comparison {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.model-sample {
-  background: rgba(20, 24, 38, 0.5);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px;
-}
-
-.model-sample h4 {
-  margin: 0 0 8px 0;
-  font-size: 14px;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.model-sample audio {
+.phonikud-cell audio {
   width: 100%;
   height: 40px;
   border-radius: 6px;
   background: var(--bg);
   border: 1px solid var(--border);
+  
+  /* Safari-specific audio styling */
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .comparison-note {
@@ -464,20 +458,42 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   /* Phonikud comparison mobile styles */
   .phonikud-comparison { padding: 16px 0 24px; }
   .comparison-intro { padding: 12px; margin-bottom: 16px; }
-  .phonikud-grid { gap: 16px; margin-bottom: 16px; }
-  .phonikud-example { padding: 12px; }
-  .example-text { padding: 10px; font-size: 14px; }
-  .example-text .translation { font-size: 13px; }
-  .model-comparison { gap: 8px; }
-  .model-sample { padding: 8px; }
-  .model-sample h4 { font-size: 13px; }
-  .model-sample audio { height: 44px; min-height: 44px; }
-  .speed-tag { font-size: 11px; padding: 1px 4px; margin-left: 4px; }
-  .comparison-note { padding: 12px; font-size: 14px; }
-  .user-guide { padding: 16px; margin-top: 16px; }
-  .guide-item { padding: 10px; gap: 10px; }
-  .guide-icon { font-size: 16px; }
-  .guide-item p { font-size: 13px; }
+  .phonikud-table { gap: 6px; margin-bottom: 16px; }
+  
+  .phonikud-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .phonikud-cell {
+    padding: 8px;
+    min-height: 50px;
+  }
+  
+  .phonikud-cell.text-cell {
+    padding: 12px;
+  }
+  
+  .hebrew-text {
+    font-size: 15px;
+    margin: 0 0 6px 0;
+  }
+  
+  .example-text .translation {
+    font-size: 13px;
+    margin: 2px 0;
+  }
+  
+  .phonikud-cell audio {
+    height: 44px;
+    min-height: 44px;
+  }
+  
+  .speed-tag {
+    font-size: 11px;
+    padding: 1px 4px;
+    margin-left: 4px;
+  }
   
   /* Stack sections more tightly on mobile */
   .story, .about, .technology { padding: 16px 0 8px; }
@@ -504,12 +520,22 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   .model-grid { grid-template-columns: 1fr; gap: 16px; }
   
   /* Phonikud comparison tablet styles */
-  .model-comparison { 
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+  .phonikud-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
-  .model-sample:first-child { 
-    grid-column: 1 / -1; 
+  
+  .phonikud-cell.text-cell {
+    grid-column: 1;
+    margin-bottom: 8px;
+  }
+  
+  .phonikud-cell:not(.text-cell) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    align-items: center;
+    padding: 8px;
   }
 }
 
@@ -614,13 +640,13 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   animation: fadeInUp 0.8s ease-out;
 }
 
-.phonikud-example {
+.phonikud-cell {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.phonikud-example:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(109, 211, 255, 0.15);
+.phonikud-cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(109, 211, 255, 0.1);
 }
 
 .model-sample {
@@ -681,9 +707,9 @@ audio:hover {
   animation: fadeInUp 0.6s ease-out 0.3s both;
 }
 
-.phonikud-example:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s both; }
-.phonikud-example:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s both; }
-.phonikud-example:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s both; }
+.phonikud-row:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.1s both; }
+.phonikud-row:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.2s both; }
+.phonikud-row:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.3s both; }
 
 /* Better visual hierarchy */
 .section-intro {
@@ -725,7 +751,7 @@ body[data-lang="he"] .lang-en { display: none !important; }
 
 /* Mobile animation optimizations */
 @media (max-width: 768px) {
-  .phonikud-example:hover {
+  .phonikud-cell:hover {
     transform: none;
     box-shadow: none;
   }
@@ -747,9 +773,9 @@ body[data-lang="he"] .lang-en { display: none !important; }
     animation-duration: 0.5s;
   }
   
-  .phonikud-example:nth-child(1),
-  .phonikud-example:nth-child(2),
-  .phonikud-example:nth-child(3) {
+  .phonikud-row:nth-child(2),
+  .phonikud-row:nth-child(3),
+  .phonikud-row:nth-child(4) {
     animation-duration: 0.4s;
     animation-delay: 0s;
   }

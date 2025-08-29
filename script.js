@@ -350,7 +350,7 @@
     }, observerOptions);
 
     // Observe elements that should animate on scroll
-    document.querySelectorAll('.phonikud-example, .vc-row:not(.vc-header)').forEach(el => {
+    document.querySelectorAll('.phonikud-row:not(.phonikud-header), .vc-row:not(.vc-header)').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
