@@ -712,13 +712,29 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   width: 100%; 
   max-height: 70vh; 
   border: none;
-  background: #000;
+  background: var(--gradient-panel);
   touch-action: manipulation;
   display: block;
   
   /* iOS video improvements */
   -webkit-playsinline: true;
   object-fit: contain;
+  
+  /* Poster image styling */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.video::-webkit-media-controls-overlay-play-button {
+  background-color: var(--brand);
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.video::cue {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 .fs-btn { 
