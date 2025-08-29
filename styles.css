@@ -442,6 +442,20 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
   opacity: 0.8;
 }
 
+.model-label {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  background: rgba(96, 212, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(96, 212, 255, 0.2);
+}
+
 .comparison-note {
   background: linear-gradient(135deg, rgba(109, 211, 255, 0.1), rgba(63, 181, 238, 0.05));
   border: 1px solid rgba(109, 211, 255, 0.2);
@@ -768,18 +782,71 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .site-footer { 
   border-top: 1px solid var(--border-subtle); 
-  padding: 32px 0; 
+  padding: 40px 0; 
   background: var(--gradient-panel);
   backdrop-filter: blur(10px);
   margin-top: 48px;
 }
 
-.site-footer p { 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-info p { 
   margin: 0; 
   color: var(--muted); 
-  text-align: center;
   font-size: 14px;
   opacity: 0.8;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.footer-credit {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.social-links a {
+  color: var(--muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(96, 212, 255, 0.05);
+  border: 1px solid rgba(96, 212, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links a:hover {
+  color: var(--brand);
+  background: rgba(96, 212, 255, 0.1);
+  border-color: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(96, 212, 255, 0.2);
+}
+
+.social-links svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* Mobile-first responsive design */
@@ -866,6 +933,25 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
     font-size: 11px;
     padding: 1px 4px;
     margin-left: 4px;
+  }
+  
+  /* Footer mobile styles */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .footer-links {
+    align-items: center;
+  }
+  
+  .social-links {
+    gap: 12px;
+  }
+  
+  .social-links a {
+    padding: 6px;
   }
   
   /* Stack sections more tightly on mobile */
