@@ -1110,7 +1110,7 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 /* Interactive elements */
-.hero-unified {
+.hero {
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -1289,7 +1289,7 @@ body[data-lang="he"] .lang-en { display: none !important; }
   }
   
   /* Keep only essential animations on mobile */
-  .hero-unified {
+  .hero {
     animation-duration: 0.5s;
   }
   
