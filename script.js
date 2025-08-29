@@ -273,18 +273,22 @@
       indicator.innerHTML = '🔊';
       indicator.style.cssText = `
         position: absolute;
-        top: 8px;
-        right: 8px;
-        background: var(--brand);
-        color: #041520;
+        top: 12px;
+        right: 12px;
+        background: linear-gradient(135deg, #60d4ff, #3db8f0);
+        color: #0a1017;
         border-radius: 50%;
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         display: none;
         align-items: center;
         justify-content: center;
         font-size: 12px;
-        z-index: 1;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(96, 212, 255, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        animation: pulse 1.5s ease-in-out infinite;
       `;
       
       // Make container relative if not already
@@ -296,19 +300,48 @@
       
       // Add event listeners
       audio.addEventListener('play', () => {
+        // Pause all other audio elements
+        document.querySelectorAll('audio').forEach(otherAudio => {
+          if (otherAudio !== audio && !otherAudio.paused) {
+            otherAudio.pause();
+          }
+        });
+        
         // Hide all other indicators
         document.querySelectorAll('.audio-indicator').forEach(ind => {
           if (ind !== indicator) ind.style.display = 'none';
         });
         indicator.style.display = 'flex';
+        
+        // Add visual feedback to container
+        container.style.transform = 'scale(1.02)';
+        container.style.boxShadow = '0 8px 32px rgba(96, 212, 255, 0.2)';
       });
       
       audio.addEventListener('pause', () => {
         indicator.style.display = 'none';
+        container.style.transform = '';
+        container.style.boxShadow = '';
       });
       
       audio.addEventListener('ended', () => {
         indicator.style.display = 'none';
+        container.style.transform = '';
+        container.style.boxShadow = '';
+      });
+      
+      // Add loading state
+      audio.addEventListener('loadstart', () => {
+        container.style.opacity = '0.7';
+      });
+      
+      audio.addEventListener('canplay', () => {
+        container.style.opacity = '1';
+      });
+      
+      audio.addEventListener('error', () => {
+        container.style.opacity = '0.5';
+        container.style.filter = 'grayscale(1)';
       });
     });
   }
@@ -403,25 +436,7 @@
     });
   }
 
-  // Add loading states for better UX
-  function addLoadingStates() {
-    document.querySelectorAll('audio').forEach(audio => {
-      const container = audio.parentElement;
-      
-      audio.addEventListener('loadstart', () => {
-        container.style.opacity = '0.7';
-      });
-      
-      audio.addEventListener('canplay', () => {
-        container.style.opacity = '1';
-      });
-      
-      audio.addEventListener('error', () => {
-        container.style.opacity = '0.5';
-        container.style.filter = 'grayscale(1)';
-      });
-    });
-  }
+
 
   // Initialize all UX enhancements
   function initUXEnhancements() {
@@ -430,7 +445,6 @@
     initScrollAnimations();
     optimizeAudioLoading();
     improveKeyboardNav();
-    addLoadingStates();
   }
 
   buildVcRows().then(() => {

@@ -428,6 +428,11 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
   outline-offset: 2px;
 }
 
+.vc-cell audio:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
 .comparison-note {
   background: linear-gradient(135deg, rgba(109, 211, 255, 0.1), rgba(63, 181, 238, 0.05));
   border: 1px solid rgba(109, 211, 255, 0.2);
@@ -963,9 +968,11 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
+    opacity: 1;
   }
   50% {
     transform: scale(1.05);
+    opacity: 0.8;
   }
 }
 
