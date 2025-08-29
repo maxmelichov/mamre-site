@@ -108,7 +108,180 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libe
 .card h3 { margin-top: 0; }
 
 .input-section { padding: 24px 0; }
+/* Phonikud comparison styles */
+.phonikud-comparison { padding: 8px 0 24px; }
+
+.comparison-intro {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.speed-info {
+  text-align: center;
+}
+
+.speed-highlight {
+  color: var(--brand);
+  font-weight: 700;
+  background: rgba(109, 211, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.speed-tag {
+  background: var(--brand);
+  color: #041520;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+.phonikud-grid {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.phonikud-example {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.example-header h3 {
+  margin: 0 0 12px 0;
+  color: var(--brand);
+  font-size: 18px;
+}
+
+.example-text {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(109, 211, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid var(--brand);
+}
+
+.example-text p {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.example-text .translation {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 14px;
+}
+
+.model-comparison {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.model-sample {
+  background: rgba(20, 24, 38, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.model-sample h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.model-sample audio {
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.comparison-note {
+  background: linear-gradient(135deg, rgba(109, 211, 255, 0.1), rgba(63, 181, 238, 0.05));
+  border: 1px solid rgba(109, 211, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.comparison-note p {
+  margin: 0;
+  line-height: 1.6;
+}
+
 .voice-conversion { padding: 8px 0 24px; }
+
+.speed-note {
+  background: rgba(109, 211, 255, 0.1);
+  border: 1px solid rgba(109, 211, 255, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.speed-note p {
+  margin: 0;
+}
+
+/* User guide styles */
+.user-guide {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.user-guide h3 {
+  margin: 0 0 16px 0;
+  color: var(--brand);
+  text-align: center;
+  font-size: 18px;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.guide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(109, 211, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid var(--brand);
+}
+
+.guide-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.guide-item p {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 14px;
+}
 .vc-table { display: grid; gap: 8px; }
 .vc-header { color: var(--muted); }
 .vc-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
@@ -288,6 +461,24 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   
   .demo-video { padding: 8px 0 24px; }
   
+  /* Phonikud comparison mobile styles */
+  .phonikud-comparison { padding: 16px 0 24px; }
+  .comparison-intro { padding: 12px; margin-bottom: 16px; }
+  .phonikud-grid { gap: 16px; margin-bottom: 16px; }
+  .phonikud-example { padding: 12px; }
+  .example-text { padding: 10px; font-size: 14px; }
+  .example-text .translation { font-size: 13px; }
+  .model-comparison { gap: 8px; }
+  .model-sample { padding: 8px; }
+  .model-sample h4 { font-size: 13px; }
+  .model-sample audio { height: 44px; min-height: 44px; }
+  .speed-tag { font-size: 11px; padding: 1px 4px; margin-left: 4px; }
+  .comparison-note { padding: 12px; font-size: 14px; }
+  .user-guide { padding: 16px; margin-top: 16px; }
+  .guide-item { padding: 10px; gap: 10px; }
+  .guide-icon { font-size: 16px; }
+  .guide-item p { font-size: 13px; }
+  
   /* Stack sections more tightly on mobile */
   .story, .about, .technology { padding: 16px 0 8px; }
 }
@@ -311,6 +502,15 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   }
   
   .model-grid { grid-template-columns: 1fr; gap: 16px; }
+  
+  /* Phonikud comparison tablet styles */
+  .model-comparison { 
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .model-sample:first-child { 
+    grid-column: 1 / -1; 
+  }
 }
 
 /* Desktop */
@@ -320,6 +520,18 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   .story-grid { grid-template-columns: 1fr 1fr; }
   .model-grid { grid-template-columns: 1fr 1fr; }
   .vc-row { grid-template-columns: 2fr 1fr 1fr; }
+  
+  /* Phonikud comparison desktop styles */
+  .model-comparison { 
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  
+  /* User guide desktop styles */
+  .guide-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
 }
 
 /* Large screens */
@@ -367,9 +579,181 @@ select:disabled, input:disabled { opacity: 0.5; cursor: not-allowed; }
   }
 }
 
+/* Enhanced animations and interactions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Interactive elements */
+.hero {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.phonikud-example {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phonikud-example:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(109, 211, 255, 0.15);
+}
+
+.model-sample {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.model-sample:hover {
+  transform: translateY(-1px);
+  border-color: var(--brand);
+  box-shadow: 0 4px 15px rgba(109, 211, 255, 0.1);
+}
+
+.model-sample:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(109, 211, 255, 0.1), transparent);
+  animation: shimmer 1.5s ease-in-out;
+}
+
+.speed-highlight {
+  animation: pulse 2s infinite;
+}
+
+.chip {
+  transition: all 0.2s ease;
+}
+
+.chip:hover:not(.active) {
+  background: #1a1e2e;
+  border-color: var(--brand);
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+audio {
+  transition: all 0.2s ease;
+}
+
+audio:hover {
+  transform: scale(1.02);
+}
+
+/* Progressive disclosure for better UX */
+.comparison-note {
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+.phonikud-example:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s both; }
+.phonikud-example:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s both; }
+.phonikud-example:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s both; }
+
+/* Better visual hierarchy */
+.section-intro {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(109, 211, 255, 0.05), rgba(63, 181, 238, 0.02));
+  border-radius: 12px;
+  border: 1px solid rgba(109, 211, 255, 0.1);
+}
+
+.section-intro h2 {
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
 /* Language visibility */
 body[data-lang="en"] .lang-he { display: none !important; }
 body[data-lang="he"] .lang-en { display: none !important; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .speed-highlight {
+    animation: none;
+  }
+}
+
+/* Mobile animation optimizations */
+@media (max-width: 768px) {
+  .phonikud-example:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .model-sample:hover {
+    transform: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  audio:hover {
+    transform: none;
+  }
+  
+  /* Keep only essential animations on mobile */
+  .hero {
+    animation-duration: 0.5s;
+  }
+  
+  .phonikud-example:nth-child(1),
+  .phonikud-example:nth-child(2),
+  .phonikud-example:nth-child(3) {
+    animation-duration: 0.4s;
+    animation-delay: 0s;
+  }
+}
 
 /* RTL adjustments */
 html[dir="rtl"] body { direction: rtl; }

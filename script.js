@@ -262,7 +262,182 @@
     }
   }
 
-  buildVcRows().then(() => updateFsUi());
+  // Enhanced UX features
+  function addAudioPlayIndicators() {
+    document.querySelectorAll('audio').forEach(audio => {
+      const container = audio.parentElement;
+      
+      // Add playing indicator
+      const indicator = document.createElement('div');
+      indicator.className = 'audio-indicator';
+      indicator.innerHTML = '🔊';
+      indicator.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: var(--brand);
+        color: #041520;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        z-index: 1;
+      `;
+      
+      // Make container relative if not already
+      if (getComputedStyle(container).position === 'static') {
+        container.style.position = 'relative';
+      }
+      
+      container.appendChild(indicator);
+      
+      // Add event listeners
+      audio.addEventListener('play', () => {
+        // Hide all other indicators
+        document.querySelectorAll('.audio-indicator').forEach(ind => {
+          if (ind !== indicator) ind.style.display = 'none';
+        });
+        indicator.style.display = 'flex';
+      });
+      
+      audio.addEventListener('pause', () => {
+        indicator.style.display = 'none';
+      });
+      
+      audio.addEventListener('ended', () => {
+        indicator.style.display = 'none';
+      });
+    });
+  }
+
+  // Smooth scroll to sections with offset for header
+  function initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+
+  // Intersection Observer for scroll animations
+  function initScrollAnimations() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements that should animate on scroll
+    document.querySelectorAll('.phonikud-example, .vc-row:not(.vc-header)').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  }
+
+  // Audio loading optimization
+  function optimizeAudioLoading() {
+    const audioElements = document.querySelectorAll('audio');
+    
+    // Use Intersection Observer to load audio when it's near viewport
+    const audioObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const audio = entry.target;
+          if (!audio.hasAttribute('data-loaded')) {
+            audio.load();
+            audio.setAttribute('data-loaded', 'true');
+          }
+        }
+      });
+    }, { rootMargin: '100px' });
+
+    audioElements.forEach(audio => audioObserver.observe(audio));
+  }
+
+  // Keyboard navigation improvements
+  function improveKeyboardNav() {
+    // Add keyboard support for language buttons
+    document.addEventListener('keydown', (e) => {
+      if (e.altKey && e.key === 'l') {
+        e.preventDefault();
+        const currentLang = bodyEl.getAttribute('data-lang');
+        const newLang = currentLang === 'en' ? 'he' : 'en';
+        applyLang(newLang);
+      }
+    });
+
+    // Add focus indicators for audio elements
+    document.querySelectorAll('audio').forEach(audio => {
+      audio.addEventListener('focus', () => {
+        audio.style.outline = '2px solid var(--brand)';
+        audio.style.outlineOffset = '2px';
+      });
+      
+      audio.addEventListener('blur', () => {
+        audio.style.outline = 'none';
+      });
+    });
+  }
+
+  // Add loading states for better UX
+  function addLoadingStates() {
+    document.querySelectorAll('audio').forEach(audio => {
+      const container = audio.parentElement;
+      
+      audio.addEventListener('loadstart', () => {
+        container.style.opacity = '0.7';
+      });
+      
+      audio.addEventListener('canplay', () => {
+        container.style.opacity = '1';
+      });
+      
+      audio.addEventListener('error', () => {
+        container.style.opacity = '0.5';
+        container.style.filter = 'grayscale(1)';
+      });
+    });
+  }
+
+  // Initialize all UX enhancements
+  function initUXEnhancements() {
+    addAudioPlayIndicators();
+    initSmoothScrolling();
+    initScrollAnimations();
+    optimizeAudioLoading();
+    improveKeyboardNav();
+    addLoadingStates();
+  }
+
+  buildVcRows().then(() => {
+    updateFsUi();
+    // Wait a bit for DOM to settle, then initialize UX features
+    setTimeout(initUXEnhancements, 100);
+  });
 })();
 
 
