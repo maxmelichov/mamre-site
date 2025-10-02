@@ -465,6 +465,107 @@
     improveKeyboardNav();
   }
 
+  // Navigation functionality
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  const header = document.querySelector('.site-header');
+
+  // Toggle mobile navigation
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      navToggle.classList.toggle('active');
+    });
+
+    // Close nav when clicking a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        navToggle.classList.remove('active');
+      });
+    });
+
+    // Close nav when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+        mainNav.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
+    });
+  }
+
+  // Scroll to top button functionality
+  if (scrollToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+
+      // Add scrolled class to header
+      if (header) {
+        if (window.pageYOffset > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Active navigation link highlighting
+  function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPosition = window.pageYOffset + 100;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNavLink);
+  updateActiveNavLink(); // Initial call
+
+  // Smooth scroll for navigation links with offset for header
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        const headerHeight = header ? header.offsetHeight : 72;
+        const targetPosition = targetSection.offsetTop - headerHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
   buildVcRows().then(() => {
     updateFsUi();
     // Wait a bit for DOM to settle, then initialize UX features

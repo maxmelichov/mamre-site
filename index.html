@@ -19,17 +19,57 @@
   <body data-lang="en">
     <header class="site-header">
       <div class="container">
-        <div class="brand"><img src="assets/logo.png" alt="MamreVoice" class="logo"></div>
-        <nav class="lang-switch" aria-label="Language switcher">
+        <div class="brand">
+          <img src="assets/logo.png" alt="MamreVoice" class="logo">
+          <span class="brand-text">
+            <span class="lang-en">MamreVoice</span>
+            <span class="lang-he">MamreVoice</span>
+          </span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="main-nav" id="mainNav">
+          <a href="#home" class="nav-link">
+            <span class="lang-en">Home</span>
+            <span class="lang-he">בית</span>
+          </a>
+          <a href="#about" class="nav-link">
+            <span class="lang-en">About</span>
+            <span class="lang-he">אודות</span>
+          </a>
+          <a href="#demo" class="nav-link">
+            <span class="lang-en">Demo</span>
+            <span class="lang-he">הדגמה</span>
+          </a>
+          <a href="#comparison" class="nav-link">
+            <span class="lang-en">Comparison</span>
+            <span class="lang-he">השוואה</span>
+          </a>
+          <a href="#voice-conversion" class="nav-link">
+            <span class="lang-en">Voice Conversion</span>
+            <span class="lang-he">המרת קול</span>
+          </a>
+        </nav>
+        <div class="lang-switch" aria-label="Language switcher">
           <button id="btn-lang-en" class="chip active" data-lang="en" aria-pressed="true">EN</button>
           <button id="btn-lang-he" class="chip" data-lang="he" aria-pressed="false">עב</button>
-        </nav>
+        </div>
       </div>
     </header>
+    
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
 
     <main>
       <!-- Welcome Section -->
-      <section class="hero">
+      <section class="hero" id="home">
         <div class="container">
           <h1 class="lang-en">Welcome to MamreVoice</h1>
           <h1 class="lang-he" lang="he">ברוכים הבאים ל-MamreVoice</h1>
@@ -47,7 +87,7 @@
       </section>
 
       <!-- Model Explanation Section -->
-      <section class="about">
+      <section class="about" id="about">
         <div class="container">
           <h2 class="lang-en">About the Model</h2>
           <h2 class="lang-he" lang="he">על המודל</h2>
@@ -116,7 +156,7 @@
       </section>
 
       <!-- Demo Video Section -->
-      <section class="demo-video">
+      <section class="demo-video" id="demo">
         <div class="container">
           <h2 class="lang-en">Demo Video</h2>
           <h2 class="lang-he" lang="he">סרטון הדגמה</h2>
@@ -133,7 +173,7 @@
 
 
       <!-- Phonikud Comparison Section -->
-      <section class="phonikud-comparison">
+      <section class="phonikud-comparison" id="comparison">
         <div class="container">
           <div class="section-header">
             <h2 class="lang-en">Model Comparison: Mamre vs Others</h2>
@@ -286,7 +326,7 @@
         </div>
       </section>
 
-      <section class="voice-conversion">
+      <section class="voice-conversion" id="voice-conversion">
         <div class="container">
           <div class="section-header">
             <h2 class="lang-en">Voice conversion</h2>
